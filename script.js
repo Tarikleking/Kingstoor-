@@ -1,0 +1,2 @@
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}}));
+const apk=document.getElementById('apk');apk.addEventListener('click',e=>{e.preventDefault();fetch('download/app.apk',{method:'HEAD'}).then(r=>{if(r.ok)location.href='download/app.apk';else throw 0}).catch(()=>alert('ضع ملف التطبيق الحقيقي باسم app.apk داخل مجلد download ثم أعد النشر على Vercel.'))});
