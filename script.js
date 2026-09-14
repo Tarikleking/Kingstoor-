@@ -44,7 +44,7 @@ if(serviceCards.length){
     active=(active+1)%serviceCards.length;
   };
   showService();
-  setInterval(showService,1800);
+  setInterval(showService,3000);
 }
 
 
