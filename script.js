@@ -44,7 +44,7 @@ if(serviceCards.length){
     active=(active+1)%serviceCards.length;
   };
   showService();
-  setInterval(showService,3000);
+  setInterval(showService,2000);
 }
 
 
@@ -57,7 +57,7 @@ if(paymentCards.length){
     paymentActive=(paymentActive+1)%paymentCards.length;
   };
   showPayment();
-  setInterval(showPayment,3000);
+  setInterval(showPayment,2000);
 }
 
 // FAQ: automatic spotlight + full manual control.
