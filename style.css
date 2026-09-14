@@ -1,3 +1,15 @@
+/* KingstooR layout safety: keep the full page width on mobile */
+html,body{width:100%;max-width:100%;min-width:0;}
+body{position:relative;}
+main,header,footer{width:100%;max-width:100%;min-width:0;}
+img,video,iframe{max-width:100%;}
+@media(max-width:700px){
+  html,body{width:100%;overflow-x:hidden;}
+  main{width:100%;}
+  .nav{width:100%;}
+  .hero,.section{width:100%;max-width:100%;}
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
 :root{--bg:#050711;--bg2:#080b17;--card:#0b1020;--line:#242943;--p:#8d24ff;--pink:#ff2c8c;--txt:#fff;--muted:#9da4bd;--max:1180px}
 *{box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{margin:0;overflow-x:hidden;background:radial-gradient(circle at 12% 0,#48117d33,transparent 30%),radial-gradient(circle at 92% 30%,#123d8a22,transparent 30%),var(--bg);color:var(--txt);font-family:Cairo,Arial,sans-serif}a{text-decoration:none;color:inherit}
@@ -212,40 +224,24 @@ body.modalOpen{overflow:hidden}
 
 
 /* Email support contact form */
-.supportEmailCard{
-  max-width:860px;
-  margin:0 auto;
-  padding:24px;
-  border:1px solid #a64dff35;
-  border-radius:26px;
-  background:linear-gradient(145deg,#0c1020,#080b16 70%);
-  box-shadow:0 20px 70px #0008,0 0 35px #8d24ff12;
-}
+/* Support email modal — same interaction style as the Policies modal */
+.supportEmailModal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:18px;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .22s ease,visibility .22s ease}
+.supportEmailModal.show{visibility:visible;opacity:1;pointer-events:auto}
+.supportEmailBackdrop{position:absolute;inset:0;background:#02030acc;backdrop-filter:blur(10px)}
+.supportEmailPanel{position:relative;z-index:1;width:min(860px,100%);max-height:min(90vh,760px);overflow:auto;padding:26px;border:1px solid #7132c866;border-radius:28px;background:linear-gradient(145deg,#0b0f20,#070912 78%);box-shadow:0 30px 100px #000b,0 0 45px #8d24ff20;transform:translateY(18px) scale(.97);transition:transform .25s cubic-bezier(.22,.8,.2,1)}
+.supportEmailModal.show .supportEmailPanel{transform:translateY(0) scale(1)}
+.supportEmailClose{position:absolute;top:14px;inset-inline-end:14px;width:38px;height:38px;border:1px solid #ffffff12;border-radius:12px;background:#ffffff0b;color:#cbd1e3;font-size:24px;line-height:1;cursor:pointer;z-index:3}
+.supportEmailClose:hover{background:#8d24ff22;border-color:#a64dff55;color:#fff}
+.supportEmailPanel .title{margin-top:4px;padding-inline:38px}
+.supportEmailPanel .supportEmailCard{box-shadow:none}
+.supportEmailCard{max-width:860px;margin:0 auto;padding:24px;border:1px solid #a64dff35;border-radius:26px;background:linear-gradient(145deg,#0c1020,#080b16 70%);box-shadow:0 20px 70px #0008,0 0 35px #8d24ff12;}
 .supportEmailIntro{display:flex;align-items:center;gap:15px;margin-bottom:20px}
 .supportEmailIcon{width:54px;height:54px;display:grid;place-items:center;border-radius:17px;background:#8d24ff18;border:1px solid #a64dff45;color:#d49cff;font-size:24px;box-shadow:0 0 28px #8d24ff18}
-.supportEmailIntro h3{margin:0 0 5px;font-size:20px;color:#fff}
-.supportEmailIntro p{margin:0;color:#aeb5cc;font-size:12px;line-height:1.9}
-.supportEmailIntro b{color:#d49cff}
-.supportEmailForm{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.supportEmailForm label{display:flex;flex-direction:column;gap:7px;color:#cdd2e4;font-size:11px;font-weight:800}
-.supportEmailForm input,.supportEmailForm textarea{
-  width:100%;box-sizing:border-box;border:1px solid #ffffff12;border-radius:15px;background:#050714;color:#fff;padding:13px 14px;outline:none;font:inherit;font-size:12px;transition:border-color .2s,box-shadow .2s;
-}
-.supportEmailForm input:focus,.supportEmailForm textarea:focus{border-color:#a64dff75;box-shadow:0 0 0 3px #8d24ff12}
-.supportEmailForm textarea{resize:vertical;min-height:135px;line-height:1.8}
-.supportMessageField{grid-column:1/-1}
-.supportEmailSubmit{grid-column:1/-1;border:0;border-radius:15px;padding:14px 18px;background:linear-gradient(90deg,#7d2cff,#c12cff);color:#fff;font:inherit;font-weight:900;cursor:pointer;box-shadow:0 10px 30px #8d24ff30;transition:transform .2s,filter .2s}
-.supportEmailSubmit:hover{transform:translateY(-2px);filter:brightness(1.08)}
-.supportEmailSubmit span{margin-right:7px}
-.supportEmailForm small{grid-column:1/-1;text-align:center;color:#777f98;font-size:9px;line-height:1.8}
-.supportEmailSubmit:disabled{opacity:.65;cursor:wait;transform:none!important}
-.supportEmailResult{grid-column:1/-1;min-height:0;text-align:center;font-size:10px;line-height:1.8}
-.supportEmailResult.success{color:#55e6a6}
-.supportEmailResult.error{color:#ff7890}
-.supportHoney{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
-@media(max-width:700px){
-  .supportEmailCard{padding:17px;border-radius:22px}
-  .supportEmailIntro h3{font-size:17px}.supportEmailIntro p{font-size:10px}
-  .supportEmailForm{grid-template-columns:1fr;gap:11px}
-  .supportMessageField,.supportEmailSubmit,.supportEmailForm small{grid-column:auto}
-}
+.supportEmailIntro h3{margin:0 0 5px;font-size:20px;color:#fff}.supportEmailIntro p{margin:0;color:#aeb5cc;font-size:12px;line-height:1.9}.supportEmailIntro b{color:#d49cff}
+.supportEmailForm{display:grid;grid-template-columns:1fr 1fr;gap:13px}.supportEmailForm label{display:flex;flex-direction:column;gap:7px;color:#cdd2e4;font-size:11px;font-weight:800}
+.supportEmailForm input,.supportEmailForm textarea{width:100%;box-sizing:border-box;border:1px solid #ffffff12;border-radius:15px;background:#050714;color:#fff;padding:13px 14px;outline:none;font:inherit;font-size:12px;transition:border-color .2s,box-shadow .2s}
+.supportEmailForm input:focus,.supportEmailForm textarea:focus{border-color:#a64dff75;box-shadow:0 0 0 3px #8d24ff12}.supportEmailForm textarea{resize:vertical;min-height:135px;line-height:1.8}
+.supportMessageField,.supportEmailSubmit,.supportEmailForm small{grid-column:1/-1}.supportEmailSubmit{border:0;border-radius:15px;padding:14px 18px;background:linear-gradient(90deg,#7d2cff,#c12cff);color:#fff;font:inherit;font-weight:900;cursor:pointer;box-shadow:0 10px 30px #8d24ff30}.supportEmailSubmit:disabled{opacity:.65;cursor:wait}.supportEmailForm small{text-align:center;color:#777f98;font-size:9px;line-height:1.8}.supportEmailResult{grid-column:1/-1;min-height:0;text-align:center;font-size:10px;line-height:1.8}.supportEmailResult.success{color:#55e6a6}.supportEmailResult.error{color:#ff7890}.supportHoney{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
+@media(max-width:700px){.supportEmailCard{padding:17px;border-radius:22px}.supportEmailIntro h3{font-size:17px}.supportEmailIntro p{font-size:10px}.supportEmailForm{grid-template-columns:1fr;gap:11px}.supportMessageField,.supportEmailSubmit,.supportEmailForm small{grid-column:auto}}
+
+@media(max-width:600px){.supportEmailModal{padding:10px}.supportEmailPanel{max-height:92vh;padding:18px;border-radius:22px}.supportEmailPanel .title{padding-inline:24px}.supportEmailPanel .title h2{font-size:25px}.supportEmailClose{top:10px;inset-inline-end:10px;width:34px;height:34px;font-size:21px}}
