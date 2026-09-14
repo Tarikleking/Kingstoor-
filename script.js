@@ -31,6 +31,14 @@ if(gallery && track && firstSet){
 }
 
 
-// Services cinematic rotation
+// Services cinematic rotation: one card enters, grows, then exits before the next appears.
 const serviceCards=[...document.querySelectorAll('.serviceVisual')];
-if(serviceCards.length){let active=0;setInterval(()=>{serviceCards.forEach((card,i)=>card.classList.toggle('serviceActive',i===active));active=(active+1)%serviceCards.length},1800);}
+if(serviceCards.length){
+  let active=0;
+  const showService=()=>{
+    serviceCards.forEach((card,i)=>card.classList.toggle('serviceActive',i===active));
+    active=(active+1)%serviceCards.length;
+  };
+  showService();
+  setInterval(showService,1800);
+}
