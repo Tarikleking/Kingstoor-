@@ -335,26 +335,3 @@ const response=await fetch('/api/support',{
     }
   });
 }
-
-
-// Chargily video play button
-const chargilyVideo = document.querySelector('.chargilyVideo');
-const chargilyPlayButtons = document.querySelectorAll('.chargilyVideoPlay');
-chargilyPlayButtons.forEach((play) => {
-  play.addEventListener('click', async () => {
-    if (!chargilyVideo) return;
-    try {
-      await chargilyVideo.play();
-    } catch (e) {
-      chargilyVideo.controls = true;
-    }
-  });
-});
-if (chargilyVideo) {
-  chargilyVideo.addEventListener('play', () => {
-    chargilyPlayButtons.forEach((b) => b.classList.add('is-playing'));
-  });
-  chargilyVideo.addEventListener('pause', () => {
-    chargilyPlayButtons.forEach((b) => b.classList.remove('is-playing'));
-  });
-}
