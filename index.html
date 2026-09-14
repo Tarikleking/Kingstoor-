@@ -13,7 +13,7 @@
 <header class="nav">
   <a class="logo" href="#home"><img src="assets/kingstoor-logo.png" alt="KingstooR"><b>KingstooR</b></a>
   <nav>
-    <a class="active" href="#home">الرئيسية</a><a href="#services">الخدمات</a><a href="#screens">صور التطبيق</a><a href="#policies">السياسات</a><a href="#download">تحميل</a>
+    <a class="active" href="#home">الرئيسية</a><a href="#services">الخدمات</a><a href="#screens">صور التطبيق</a><a href="#supportEmail">مراسلة الدعم</a><a href="#policies">السياسات</a><a href="#download">تحميل</a>
   </nav>
   <a class="navbtn" href="#download">تحميل التطبيق ↓</a>
 </header>
@@ -139,6 +139,31 @@
   <a class="downloadBtn btn primary" id="apk" href="download/app.apk"><span>تحميل التطبيق</span><small>APK • Android</small><b>↓</b></a>
 </section>
 
+<section class="section supportEmail" id="supportEmail" aria-labelledby="supportEmailTitle">
+  <div class="title"><i>✦</i><div><h2 id="supportEmailTitle">مراسلة الدعم</h2><p>تواصل معنا مباشرة عبر البريد الإلكتروني الرسمي</p></div><i>✦</i></div>
+  <div class="supportEmailCard">
+    <div class="supportEmailIntro">
+      <span class="supportEmailIcon">✉</span>
+      <div>
+        <h3>دعم KingstooR</h3>
+        <p>أرسل رسالتك وسنستلمها عبر <b>support@kingstoor.com</b>.</p>
+      </div>
+    </div>
+    <form class="supportEmailForm" action="https://formsubmit.co/support@kingstoor.com" method="POST">
+      <input type="hidden" name="_subject" value="رسالة دعم جديدة - KingstooR">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="supportHoney" aria-hidden="true">
+      <label>الاسم<input type="text" name="name" maxlength="80" autocomplete="name" required placeholder="اكتب اسمك"></label>
+      <label>البريد الإلكتروني<input type="email" name="email" maxlength="160" autocomplete="email" required placeholder="name@example.com"></label>
+      <label class="supportMessageField">الرسالة<textarea name="message" maxlength="3000" rows="6" required placeholder="اكتب رسالتك هنا..."></textarea></label>
+      <button type="submit" class="supportEmailSubmit">إرسال الرسالة <span>➤</span></button>
+      <div class="supportEmailResult" id="supportEmailResult" role="status" aria-live="polite"></div>
+      <small>لن نطلب منك كلمة المرور أو رمز OTP عبر البريد أو الدعم.</small>
+    </form>
+  </div>
+</section>
+
 <section class="section faq" id="faq"><div class="title"><i>✦</i><div><h2>الأسئلة الشائعة</h2><p>كل ما تحتاج معرفته عن التطبيق والخدمات والدفع</p></div><i>✦</i></div>
 <div class="faqgrid">
   <details class="faqItem"><summary><span>ما هو تطبيق KingstooR وماذا يقدم؟</span><b>+</b></summary><p>KingstooR منصة رقمية تجمع خدمات التفاعل مع Instagram وTikTok وYouTube وTelegram، إضافة إلى شحن الألعاب والرصيد وخيارات الدفع والشحن الرقمية.</p></details>
@@ -176,7 +201,7 @@
 
 </main>
 
-<footer><div class="footlogo"><img src="assets/kingstoor-logo.png" alt="KingstooR"><b><span>KinG</span>stooR</b></div><div class="links"><a href="#home">الرئيسية</a><a href="#services">الخدمات</a><a href="#screens">صور التطبيق</a><a href="#faq">الأسئلة الشائعة</a><a href="#policies">السياسات</a><a href="#download">تحميل</a></div><p>© 2026 KingstooR — جميع الحقوق محفوظة.</p></footer>
+<footer><div class="footlogo"><img src="assets/kingstoor-logo.png" alt="KingstooR"><b><span>KinG</span>stooR</b></div><div class="links"><a href="#home">الرئيسية</a><a href="#services">الخدمات</a><a href="#screens">صور التطبيق</a><a href="#faq">الأسئلة الشائعة</a><a href="#supportEmail">مراسلة الدعم</a><a href="#policies">السياسات</a><a href="#download">تحميل</a></div><p>© 2026 KingstooR — جميع الحقوق محفوظة.</p></footer>
 <div class="devModal" id="devModal">
   <div class="devModalBox">
     <div class="devIcon">🚧</div>
