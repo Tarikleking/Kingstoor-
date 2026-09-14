@@ -161,3 +161,51 @@ body.modalOpen{overflow:hidden}
 .policyTabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px 0 14px;padding:6px;border:1px solid #252b46;border-radius:17px;background:#070a15}.policyTab{border:0;border-radius:12px;padding:11px 8px;background:transparent;color:#969eb8;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;transition:.3s}.policyTab.active{color:#fff;background:linear-gradient(90deg,#8125e9,#d52b8d);box-shadow:0 8px 25px #8d24ff22}.policyContent{display:none;position:relative;min-height:230px;padding:26px 25px 25px;border:1px solid #282e4b;border-radius:22px;background:linear-gradient(145deg,#10162a,#080b16);overflow:hidden;animation:policyContentIn .4s ease}.policyContent.active{display:block}.policyContent::after{content:"";position:absolute;width:220px;height:220px;left:-100px;bottom:-120px;border-radius:50%;background:#8d24ff;filter:blur(65px);opacity:.11}.policyNum{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#8d24ff14;border:1px solid #a64dff55;color:#d296ff;font-size:10px;font-weight:900}.policyContent h3{font-size:20px;margin:17px 0 8px}.policyContent p{max-width:760px;margin:0;color:#aeb5cc;font-size:12px;line-height:2.05}.policySecurity{display:flex;align-items:center;gap:12px;margin-top:14px;padding:14px 16px;border-radius:16px;border:1px solid #35d39a42;background:linear-gradient(90deg,#0b211b,#091119);color:#a6bdb5;font-size:10px;line-height:1.8}.policySecurity b{color:#57e0ad;white-space:nowrap}
 @keyframes policyIconFloat{50%{transform:translateY(-4px) rotate(2deg);box-shadow:0 0 45px #8d24ff35}}@keyframes policyContentIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(max-width:700px){.nav nav{overflow-x:auto;justify-content:flex-start;white-space:nowrap}.nav nav a{padding:8px 9px;font-size:10px}.navbtn{display:none}.policyModal{padding:10px}.policyPanel{padding:20px 15px;border-radius:23px;max-height:94vh}.policyPanelHead{padding-left:42px;gap:10px}.policyPanelIcon{width:48px;height:48px;flex-basis:48px;border-radius:15px}.policyPanelHead h2{font-size:18px}.policyPanelHead p{font-size:9px}.policyTabs{grid-template-columns:1fr 1fr;gap:6px}.policyTab{font-size:9px;padding:10px 5px}.policyContent{min-height:270px;padding:20px 17px}.policyContent h3{font-size:16px}.policyContent p{font-size:10px}.policySecurity{align-items:flex-start;flex-direction:column;gap:4px;font-size:9px}}
+
+/* Fix: download development modal */
+.devModal{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:20px;background:#02030ae8;backdrop-filter:blur(10px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility .25s ease}
+.devModal.show{opacity:1;visibility:visible;pointer-events:auto}
+.devModalBox{width:min(390px,calc(100vw - 32px));padding:28px 22px;text-align:center;border:1px solid #8d35ff77;border-radius:24px;background:linear-gradient(145deg,#11172a,#080b16);box-shadow:0 25px 80px #000b,0 0 40px #8d24ff22;transform:translateY(12px) scale(.96);transition:transform .25s ease}
+.devModal.show .devModalBox{transform:none}
+.devIcon{font-size:42px;line-height:1;margin-bottom:12px}
+.devModalBox h3{margin:0 0 8px;font-size:20px;color:#fff}
+.devModalBox p{margin:0;color:#aeb5cc;font-size:12px;line-height:1.9}
+.devModalBox button{margin-top:18px;min-width:120px;height:42px;border:0;border-radius:13px;background:linear-gradient(90deg,#8d24ff,#ff2c8c);color:#fff;font-family:inherit;font-weight:900;cursor:pointer;box-shadow:0 8px 24px #8d24ff33}
+
+/* Fix: draggable WhatsApp support button */
+.whatsappFloat{position:fixed;right:18px;bottom:20px;z-index:9990;width:54px;height:54px;padding:0;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#25d366;color:#fff;box-shadow:0 8px 25px #0008,0 0 20px #25d36655;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;font-family:inherit}
+.whatsappFloat:active{cursor:grabbing}
+.whatsappFloat span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;line-height:1}
+.whatsappFloat span svg{width:29px;height:29px;display:block;fill:#fff}
+.whatsappFloat:hover{transform:scale(1.06);box-shadow:0 12px 30px #0009,0 0 28px #25d36677}
+
+/* Fix: in-site support chat */
+.supportChat{position:fixed;right:18px;bottom:88px;width:350px;max-width:calc(100vw - 28px);height:450px;z-index:9989;display:flex;flex-direction:column;overflow:hidden;border:1px solid #2d3658;border-radius:22px;background:linear-gradient(145deg,#11172a,#080c17 78%);box-shadow:0 22px 70px #000b,0 0 35px #25d36618;opacity:0;visibility:hidden;transform:translateY(14px) scale(.96);pointer-events:none;transition:opacity .22s ease,transform .22s ease,visibility .22s ease}
+.supportChat.is-open{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.supportChatHead{display:flex;align-items:center;gap:10px;padding:13px 14px;background:linear-gradient(135deg,#172039,#0d1323);border-bottom:1px solid #293252}
+.supportChatAvatar{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:50%;background:#25d366;box-shadow:0 0 20px #25d36645}
+.supportChatAvatar svg{width:25px;height:25px;fill:#fff}
+.supportChatHead b{display:block;color:#fff;font-size:13px}
+.supportChatHead small{display:flex;align-items:center;gap:5px;margin-top:3px;color:#9ca6c2;font-size:9px}
+.supportChatHead small i{width:6px;height:6px;border-radius:50%;background:#25d366;box-shadow:0 0 8px #25d366;display:block}
+.supportChatClose{margin-inline-start:auto;width:30px;height:30px;border:0;border-radius:10px;background:#ffffff0b;color:#aeb7d1;font-size:20px;cursor:pointer}
+.supportChatBody{flex:1;padding:18px 14px;overflow:auto;background:radial-gradient(circle at 20% 20%,#25d36608,transparent 35%)}
+.supportMsg{max-width:88%;padding:11px 12px;margin-bottom:9px;border:1px solid #2a3350;border-radius:14px 14px 4px 14px;color:#dce2f3;font-size:11px;line-height:1.8;background:#151c30}
+.supportMsgAgent{margin-right:auto;margin-left:0;border-radius:14px 14px 14px 4px}
+.supportChatFoot{padding:12px;border-top:1px solid #293252;background:#0d1323}
+.supportChatForm{display:flex;align-items:center;gap:7px;margin:0}
+.supportChatInput{flex:1;min-width:0;height:44px;padding:0 12px;border:1px solid #303954;border-radius:13px;background:#080d1b;color:#fff;outline:none;font-family:inherit;font-size:11px;direction:rtl}
+.supportChatInput::placeholder{color:#737d99}
+.supportChatInput:focus{border-color:#8d24ff;box-shadow:0 0 0 3px #8d24ff12}
+.supportChatForm #supportChatSend{width:44px;height:44px;flex:0 0 44px;border:0;border-radius:13px;background:#25d366;color:#fff;font-size:20px;font-weight:900;cursor:pointer;box-shadow:0 8px 20px #25d36625;display:grid;place-items:center}
+.supportChatStatus{margin-top:7px;color:#6f7895;text-align:center;font-size:9px}
+.supportDirectWhatsapp{width:100%;height:40px;margin-top:8px;border:1px solid #25d36655;border-radius:12px;background:#25d36612;color:#dfffea;font-family:inherit;font-size:10px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px}
+.supportDirectWhatsapp svg{width:19px;height:19px;fill:#25d366}
+
+@media(max-width:700px){
+  .whatsappFloat{width:50px;height:50px;right:14px;bottom:18px}
+  .whatsappFloat span svg{width:27px;height:27px}
+  .supportChat{right:14px;bottom:78px;width:calc(100vw - 28px);height:min(450px,64vh)}
+  .devModal{padding:14px}
+  .devModalBox{width:min(390px,calc(100vw - 28px));padding:24px 18px}
+}
