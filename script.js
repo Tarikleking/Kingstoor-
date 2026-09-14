@@ -1,9 +1,26 @@
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}}));
 const apk=document.getElementById('apk');
+const devModal=document.getElementById('devModal');
+const devClose=document.getElementById('devClose');
+
 if(apk){
   apk.addEventListener('click',e=>{
     e.preventDefault();
-    alert('KingstooR قيد التطوير 🚧\nالتحميل سيكون متاحاً قريباً.');
+    devModal.classList.add('show');
+  });
+}
+
+if(devClose){
+  devClose.addEventListener('click',()=>{
+    devModal.classList.remove('show');
+  });
+}
+
+if(devModal){
+  devModal.addEventListener('click',e=>{
+    if(e.target===devModal){
+      devModal.classList.remove('show');
+    }
   });
 }
 // Continuous screenshot conveyor with center-focus scaling and drag support.
