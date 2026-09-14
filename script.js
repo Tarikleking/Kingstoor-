@@ -137,3 +137,75 @@ policyModal?.querySelectorAll('.policyTab').forEach(tab=>tab.addEventListener('c
   policyModal.querySelectorAll('.policyContent').forEach(c=>c.classList.toggle('active',c.dataset.policyContent===key));
 }));
 if(location.hash==='#policies') openPolicies();
+// Draggable WhatsApp support button
+const whatsappFloat=document.getElementById('whatsappFloat');
+
+if(whatsappFloat){
+  let dragging=false;
+  let moved=false;
+  let startX=0;
+  let startY=0;
+  let offsetX=0;
+  let offsetY=0;
+
+  whatsappFloat.addEventListener('pointerdown',e=>{
+    dragging=true;
+    moved=false;
+
+    const rect=whatsappFloat.getBoundingClientRect();
+
+    startX=e.clientX;
+    startY=e.clientY;
+    offsetX=e.clientX-rect.left;
+    offsetY=e.clientY-rect.top;
+
+    whatsappFloat.setPointerCapture?.(e.pointerId);
+  });
+
+  whatsappFloat.addEventListener('pointermove',e=>{
+    if(!dragging)return;
+
+    const dx=e.clientX-startX;
+    const dy=e.clientY-startY;
+
+    if(Math.abs(dx)>5 || Math.abs(dy)>5){
+      moved=true;
+    }
+
+    if(!moved)return;
+
+    const maxX=window.innerWidth-whatsappFloat.offsetWidth;
+    const maxY=window.innerHeight-whatsappFloat.offsetHeight;
+
+    const x=Math.max(0,Math.min(e.clientX-offsetX,maxX));
+    const y=Math.max(0,Math.min(e.clientY-offsetY,maxY));
+
+    whatsappFloat.style.left=x+'px';
+    whatsappFloat.style.top=y+'px';
+    whatsappFloat.style.right='auto';
+    whatsappFloat.style.bottom='auto';
+  });
+
+  whatsappFloat.addEventListener('pointerup',e=>{
+    if(!dragging)return;
+
+    dragging=false;
+
+    if(moved){
+      e.preventDefault();
+    }
+  });
+
+  whatsappFloat.addEventListener('pointercancel',()=>{
+    dragging=false;
+    moved=false;
+  });
+
+  whatsappFloat.addEventListener('click',e=>{
+    if(moved){
+      e.preventDefault();
+      e.stopPropagation();
+      moved=false;
+    }
+  });
+}
