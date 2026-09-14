@@ -26,11 +26,10 @@ footer{padding:28px max(20px,calc((100% - var(--max))/2));border-top:1px solid #
 
 /* Automatic screenshot marquee */
 .galleryWrap{overflow:hidden;margin-inline:-20px;padding-inline:20px}
-.screens{overflow:hidden;display:block;padding:6px 0 20px;cursor:default;direction:ltr}
-.screens-track{display:flex;width:max-content;will-change:transform}
+.screens{overflow:hidden;display:block;padding:6px 0 20px;cursor:grab;direction:ltr;touch-action:pan-y}
+.screens-track{display:flex;width:max-content;will-change:transform;transform:translate3d(0,0,0)}
 .screen-set{display:flex;gap:16px;flex:none;padding-right:16px}
 .screen-card{flex:0 0 245px}
-.screens:hover .screens-track{animation-play-state:paused}
-@media (prefers-reduced-motion: reduce){.screens-track{animation:none!important}}
+.screens.dragging{cursor:grabbing}
 @media(max-width:1000px){.servicesGrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.servicesGrid{grid-template-columns:1fr;gap:10px}.serviceCard{min-height:82px;padding:12px 13px}.serviceIcon{flex-basis:48px;width:48px;height:48px;border-radius:15px}.serviceIcon svg{width:24px;height:24px}.serviceText h3{font-size:14px}.serviceText small{font-size:9px}.serviceArrow{width:27px;height:27px}.galleryWrap{margin-inline:-12px;padding-inline:12px}.screen-set{gap:11px;padding-right:11px}.screen-card{flex-basis:72vw;height:390px}}
