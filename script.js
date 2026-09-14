@@ -307,11 +307,20 @@ if(supportEmailForm){
     supportEmailResult.textContent='';
 
     try{
-      const response=await fetch('/api/support',{
-        method:'POST',
-        headers:{'Accept':'application/json'},
-        body:new FormData(supportEmailForm)
-      });
+      const formData = new FormData(supportEmailForm);
+
+const response=await fetch('/api/support',{
+  method:'POST',
+  headers:{
+    'Accept':'application/json',
+    'Content-Type':'application/json'
+  },
+  body:JSON.stringify({
+    name:formData.get('name'),
+    email:formData.get('email'),
+    message:formData.get('message')
+  })
+});
       const data=await response.json().catch(()=>({}));
       if(!response.ok || data.success===false) throw new Error('send_failed');
 
