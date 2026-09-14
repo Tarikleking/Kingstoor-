@@ -326,3 +326,21 @@ body.modalOpen{overflow:hidden}
   .chargilyVideo{height:92px;}
   .chargilyVideoPlay{height:34px;padding:0 11px;font-size:10px;}
 }
+
+
+/* Chargily final layout: video left, watch button in previous video position */
+.chargilyVideoSide{padding:10px;justify-content:center;min-height:100%;}
+.chargilyVideoSide .chargilyVideoWrap{width:100%;height:100%;min-height:210px;border-radius:15px;display:flex;align-items:center;justify-content:center;}
+.chargilyVideoSide .chargilyVideo{width:100%;height:100%;min-height:210px;object-fit:cover;border:0;border-radius:14px;}
+.chargilyWatchCard{min-height:84px;display:flex;align-items:center;justify-content:center;margin-top:15px;padding:9px;border:1px solid #303650;border-radius:16px;background:linear-gradient(90deg,#11172a,#0b1020);}
+.chargilyWatchCard .chargilyVideoPlay{position:static;inset:auto;margin:0;width:auto;height:44px;padding:0 22px;background:linear-gradient(90deg,#7d2cff,#c12cff);border:1px solid #d18cff;color:#fff;font:900 12px/1 Cairo,Arial,sans-serif;box-shadow:0 10px 30px #8d24ff35;opacity:1;pointer-events:auto;}
+.chargilyWatchCard .chargilyVideoPlay span{margin-inline-end:7px;margin-inline-start:0;font-size:13px;}
+@media(max-width:700px){
+  .chargilyTrustCard{display:flex;flex-direction:column;padding:19px 17px;}
+  .chargilyTrustMain{display:contents;}
+  .chargilyVideoSide{order:2;margin-top:13px;min-height:150px;}
+  .chargilyVideoSide .chargilyVideoWrap,.chargilyVideoSide .chargilyVideo{min-height:145px;height:145px;}
+  .chargilyTrustSide{display:flex;padding:10px;}
+  .chargilyWatchCard{order:1;min-height:72px;margin-top:13px;}
+  .chargilyWatchCard .chargilyVideoPlay{height:40px;padding:0 18px;font-size:11px;}
+}

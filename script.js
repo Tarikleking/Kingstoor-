@@ -338,18 +338,23 @@ const response=await fetch('/api/support',{
 
 
 // Chargily video play button
-document.querySelectorAll('.chargilyVideoWrap').forEach((wrap) => {
-  const video = wrap.querySelector('.chargilyVideo');
-  const play = wrap.querySelector('.chargilyVideoPlay');
-  if (!video || !play) return;
+const chargilyVideo = document.querySelector('.chargilyVideo');
+const chargilyPlayButtons = document.querySelectorAll('.chargilyVideoPlay');
+chargilyPlayButtons.forEach((play) => {
   play.addEventListener('click', async () => {
+    if (!chargilyVideo) return;
     try {
-      await video.play();
-      wrap.classList.add('is-playing');
+      await chargilyVideo.play();
     } catch (e) {
-      wrap.classList.remove('is-playing');
+      chargilyVideo.controls = true;
     }
   });
-  video.addEventListener('play', () => wrap.classList.add('is-playing'));
-  video.addEventListener('pause', () => wrap.classList.remove('is-playing'));
 });
+if (chargilyVideo) {
+  chargilyVideo.addEventListener('play', () => {
+    chargilyPlayButtons.forEach((b) => b.classList.add('is-playing'));
+  });
+  chargilyVideo.addEventListener('pause', () => {
+    chargilyPlayButtons.forEach((b) => b.classList.remove('is-playing'));
+  });
+}
