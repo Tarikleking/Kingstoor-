@@ -137,6 +137,7 @@ policyModal?.querySelectorAll('.policyTab').forEach(tab=>tab.addEventListener('c
   policyModal.querySelectorAll('.policyContent').forEach(c=>c.classList.toggle('active',c.dataset.policyContent===key));
 }));
 if(location.hash==='#policies') openPolicies();
+
 // Draggable WhatsApp support button
 const whatsappFloat=document.getElementById('whatsappFloat');
 
@@ -145,8 +146,8 @@ if(whatsappFloat){
   let moved=false;
   let startX=0;
   let startY=0;
-  let offsetX=0;
-  let offsetY=0;
+  let startLeft=0;
+  let startTop=0;
 
   whatsappFloat.addEventListener('pointerdown',e=>{
     dragging=true;
@@ -156,10 +157,16 @@ if(whatsappFloat){
 
     startX=e.clientX;
     startY=e.clientY;
-    offsetX=e.clientX-rect.left;
-    offsetY=e.clientY-rect.top;
+    startLeft=rect.left;
+    startTop=rect.top;
 
-    whatsappFloat.setPointerCapture?.(e.pointerId);
+    whatsappFloat.style.left=startLeft+'px';
+    whatsappFloat.style.top=startTop+'px';
+    whatsappFloat.style.right='auto';
+    whatsappFloat.style.bottom='auto';
+
+    whatsappFloat.setPointerCapture(e.pointerId);
+    e.preventDefault();
   });
 
   whatsappFloat.addEventListener('pointermove',e=>{
@@ -168,7 +175,7 @@ if(whatsappFloat){
     const dx=e.clientX-startX;
     const dy=e.clientY-startY;
 
-    if(Math.abs(dx)>5 || Math.abs(dy)>5){
+    if(Math.abs(dx)>4 || Math.abs(dy)>4){
       moved=true;
     }
 
@@ -177,29 +184,29 @@ if(whatsappFloat){
     const maxX=window.innerWidth-whatsappFloat.offsetWidth;
     const maxY=window.innerHeight-whatsappFloat.offsetHeight;
 
-    const x=Math.max(0,Math.min(e.clientX-offsetX,maxX));
-    const y=Math.max(0,Math.min(e.clientY-offsetY,maxY));
+    const x=Math.max(0,Math.min(startLeft+dx,maxX));
+    const y=Math.max(0,Math.min(startTop+dy,maxY));
 
     whatsappFloat.style.left=x+'px';
     whatsappFloat.style.top=y+'px';
-    whatsappFloat.style.right='auto';
-    whatsappFloat.style.bottom='auto';
+
+    e.preventDefault();
   });
 
-  whatsappFloat.addEventListener('pointerup',e=>{
+  const stopDrag=e=>{
     if(!dragging)return;
 
     dragging=false;
 
-    if(moved){
-      e.preventDefault();
+    if(e.pointerId!==undefined){
+      try{
+        whatsappFloat.releasePointerCapture(e.pointerId);
+      }catch(err){}
     }
-  });
+  };
 
-  whatsappFloat.addEventListener('pointercancel',()=>{
-    dragging=false;
-    moved=false;
-  });
+  whatsappFloat.addEventListener('pointerup',stopDrag);
+  whatsappFloat.addEventListener('pointercancel',stopDrag);
 
   whatsappFloat.addEventListener('click',e=>{
     if(moved){
@@ -207,5 +214,9 @@ if(whatsappFloat){
       e.stopPropagation();
       moved=false;
     }
+  });
+
+  whatsappFloat.addEventListener('dragstart',e=>{
+    e.preventDefault();
   });
 }
