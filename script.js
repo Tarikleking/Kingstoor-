@@ -1,79 +1,28 @@
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}}));
-// Download button: the APK is still under development. Show a dedicated modal instead of navigating.
-const ensureDevModal=()=>{
-  let modal=document.getElementById('devModal');
-  if(modal) return modal;
+const apk=document.getElementById('apk');
+const devModal=document.getElementById('devModal');
+const devClose=document.getElementById('devClose');
 
-  modal=document.createElement('div');
-  modal.id='devModal';
-  modal.className='devModal';
-  modal.setAttribute('aria-hidden','true');
-  modal.innerHTML=`
-    <div class="devModalBox" role="dialog" aria-modal="true" aria-labelledby="devModalTitle">
-      <div class="devIcon">🚧</div>
-      <h3 id="devModalTitle">التطبيق قيد التطوير</h3>
-      <p>تطبيق KingstooR سيكون متاحاً للتحميل قريباً.</p>
-      <button id="devClose" type="button">حسناً</button>
-    </div>`;
-
-  document.body.appendChild(modal);
-
-  if(!document.getElementById('devModalRuntimeStyle')){
-    const style=document.createElement('style');
-    style.id='devModalRuntimeStyle';
-    style.textContent=`
-      .devModal{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(2,4,12,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-      .devModal.show{display:flex}
-      .devModalBox{width:min(92vw,390px);padding:28px 22px;text-align:center;border:1px solid #303653;border-radius:24px;background:linear-gradient(145deg,#101426,#080b15);box-shadow:0 25px 80px rgba(0,0,0,.65),0 0 35px rgba(167,77,255,.16);color:#fff;animation:devModalIn .22s ease-out}
-      .devIcon{font-size:42px;line-height:1;margin-bottom:14px}
-      .devModalBox h3{margin:0 0 9px;font-size:22px;font-weight:950}
-      .devModalBox p{margin:0 auto 20px;color:#b8bed2;font-size:13px;line-height:1.9}
-      .devModalBox button{border:0;border-radius:12px;padding:11px 28px;background:linear-gradient(90deg,#a74dff,#ff4d9d);color:#fff;font-weight:900;font-size:13px;cursor:pointer;box-shadow:0 8px 25px rgba(167,77,255,.25)}
-      @keyframes devModalIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}`;
-    document.head.appendChild(style);
-  }
-
-  return modal;
-};
-
-const showDevModal=()=>{
-  const modal=ensureDevModal();
-  modal.classList.add('show');
-  modal.setAttribute('aria-hidden','false');
-};
-
-const hideDevModal=()=>{
-  const modal=document.getElementById('devModal');
-  if(modal){
-    modal.classList.remove('show');
-    modal.setAttribute('aria-hidden','true');
-  }
-};
-
-document.addEventListener('click',e=>{
-  const apk=e.target.closest?.('#apk');
-  if(apk){
+if(apk){
+  apk.addEventListener('click',e=>{
     e.preventDefault();
-    e.stopPropagation();
-    showDevModal();
-    return;
-  }
+    devModal.classList.add('show');
+  });
+}
 
-  if(e.target.closest?.('#devClose')){
-    e.preventDefault();
-    hideDevModal();
-    return;
-  }
+if(devClose){
+  devClose.addEventListener('click',()=>{
+    devModal.classList.remove('show');
+  });
+}
 
-  if(e.target.id==='devModal'){
-    hideDevModal();
-  }
-});
-
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape') hideDevModal();
-});
-
+if(devModal){
+  devModal.addEventListener('click',e=>{
+    if(e.target===devModal){
+      devModal.classList.remove('show');
+    }
+  });
+}
 // Continuous screenshot conveyor with center-focus scaling and drag support.
 const gallery=document.querySelector('.screens');
 const track=document.querySelector('.screens-track');
@@ -181,7 +130,7 @@ const closePolicies=()=>{
 };
 document.querySelectorAll('a[href="#policies"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openPolicies();history.replaceState(null,'','#policies');}));
 policyModal?.querySelectorAll('[data-policy-close]').forEach(el=>el.addEventListener('click',closePolicies));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePolicies();closeSupportEmail();closeSupportChat();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePolicies();});
 policyModal?.querySelectorAll('.policyTab').forEach(tab=>tab.addEventListener('click',()=>{
   const key=tab.dataset.policyTab;
   policyModal.querySelectorAll('.policyTab').forEach(t=>t.classList.toggle('active',t===tab));
@@ -264,9 +213,7 @@ if(whatsappFloat){
       e.preventDefault();
       e.stopPropagation();
       moved=false;
-      return;
     }
-    openSupportChat();
   });
 
   whatsappFloat.addEventListener('dragstart',e=>{
@@ -275,54 +222,31 @@ if(whatsappFloat){
 }
 
 
-// Email support modal — opens like Policies instead of scrolling the page.
-const supportEmailModal=document.getElementById('supportEmail');
-const openSupportEmail=()=>{if(!supportEmailModal)return;supportEmailModal.classList.add('show');supportEmailModal.setAttribute('aria-hidden','false');document.body.classList.add('modalOpen');};
-const closeSupportEmail=()=>{if(!supportEmailModal)return;supportEmailModal.classList.remove('show');supportEmailModal.setAttribute('aria-hidden','true');document.body.classList.remove('modalOpen');};
-document.querySelectorAll('a[href="#supportEmail"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openSupportEmail();history.replaceState(null,'','#supportEmail');}));
-supportEmailModal?.querySelectorAll('[data-support-email-close]').forEach(el=>el.addEventListener('click',closeSupportEmail));
-
-// WhatsApp support chat + direct WhatsApp link.
-const supportChat=document.getElementById('supportChat');
-const openWhatsappChat=document.getElementById('openWhatsappChat');
-const supportChatClose=document.getElementById('supportChatClose');
-const whatsappSupportUrl='https://wa.me/message/QN3WRQCRP7SIH1';
-function openSupportChat(){if(!supportChat)return;supportChat.classList.add('is-open');supportChat.setAttribute('aria-hidden','false');}
-function closeSupportChat(){if(!supportChat)return;supportChat.classList.remove('is-open');supportChat.setAttribute('aria-hidden','true');}
-if(supportChatClose)supportChatClose.addEventListener('click',closeSupportChat);
-if(openWhatsappChat)openWhatsappChat.addEventListener('click',()=>{window.open(whatsappSupportUrl,'_blank','noopener,noreferrer');});
-
-// Email support form: free FormSubmit endpoint, delivered to support@kingstoor.com.
-const supportEmailForm=document.getElementById('supportEmailForm');
-const supportEmailResult=document.getElementById('supportEmailResult');
-if(supportEmailForm){
-  supportEmailForm.addEventListener('submit',async e=>{
+// Email support via Vercel serverless function + Resend
+const emailSupportForm = document.getElementById('emailSupportForm');
+if(emailSupportForm){
+  const submitBtn = document.getElementById('emailSupportSubmit');
+  const status = document.getElementById('emailSupportStatus');
+  emailSupportForm.addEventListener('submit', async (e)=>{
     e.preventDefault();
-    if(!supportEmailResult)return;
-
-    const submit=supportEmailForm.querySelector('.supportEmailSubmit');
-    const original=submit?.innerHTML || 'إرسال الرسالة <span>➤</span>';
-    if(submit){submit.disabled=true;submit.innerHTML='جارٍ الإرسال...';}
-    supportEmailResult.className='supportEmailResult';
-    supportEmailResult.textContent='';
-
+    if(emailSupportForm.website.value) return;
+    submitBtn.disabled = true;
+    status.textContent = 'جاري إرسال رسالتك...';
     try{
-      const response=await fetch('https://formsubmit.co/ajax/support@kingstoor.com',{
+      const data = Object.fromEntries(new FormData(emailSupportForm).entries());
+      const res = await fetch('/api/support', {
         method:'POST',
-        headers:{'Accept':'application/json'},
-        body:new FormData(supportEmailForm)
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:data.name,email:data.email,message:data.message})
       });
-      const data=await response.json().catch(()=>({}));
-      if(!response.ok || data.success===false) throw new Error('send_failed');
-
-      supportEmailResult.classList.add('success');
-      supportEmailResult.textContent='تم إرسال رسالتك بنجاح ✅ سنراجعها ونرد عليك عبر البريد.';
-      supportEmailForm.reset();
+      const out = await res.json().catch(()=>({}));
+      if(!res.ok || !out.success) throw new Error(out.error || 'send_failed');
+      emailSupportForm.reset();
+      status.textContent = 'تم الإرسال ✅ ستصلك رسالة تأكيد عبر support@kingstoor.com';
     }catch(err){
-      supportEmailResult.classList.add('error');
-      supportEmailResult.textContent='تعذر إرسال الرسالة حالياً. حاول مرة أخرى أو استخدم WhatsApp.';
+      status.textContent = 'تعذر الإرسال حالياً. حاول مرة أخرى بعد قليل.';
     }finally{
-      if(submit){submit.disabled=false;submit.innerHTML=original;}
+      submitBtn.disabled = false;
     }
   });
 }
