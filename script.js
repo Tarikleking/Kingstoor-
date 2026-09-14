@@ -29,3 +29,8 @@ if(gallery && track && firstSet){
   gallery.addEventListener('mouseleave',()=>{if(!dragging)paused=false});
   requestAnimationFrame(tick);
 }
+
+
+// Services cinematic rotation
+const serviceCards=[...document.querySelectorAll('.serviceVisual')];
+if(serviceCards.length){let active=0;setInterval(()=>{serviceCards.forEach((card,i)=>card.classList.toggle('serviceActive',i===active));active=(active+1)%serviceCards.length},1800);}
