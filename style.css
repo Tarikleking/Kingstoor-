@@ -59,3 +59,40 @@ footer{padding:28px max(20px,calc((100% - var(--max))/2));border-top:1px solid #
 .usdt .serviceBg{background:radial-gradient(circle at 78% 28%,#26d39a 0,transparent 30%),linear-gradient(135deg,#061713,#0a4937 50%,#080b16)}
 @keyframes bgDrift{0%,100%{transform:translate3d(-2%,0,0) scale(1)}50%{transform:translate3d(3%,2%,0) scale(1.08)}}
 @keyframes bgSweep{0%,20%{transform:translateX(-30%) rotate(0);opacity:0}42%{opacity:.8}75%,100%{transform:translateX(28%) rotate(1deg);opacity:0}}
+
+/* Brand logo polish */
+.logo img,.footlogo img{border-radius:14px;box-shadow:0 0 24px #8d24ff55,0 0 0 1px #b85cff44;transition:transform .35s ease,box-shadow .35s ease}.logo:hover img,.footlogo:hover img{transform:scale(1.06) rotate(-2deg);box-shadow:0 0 32px #a83cff88,0 0 0 1px #d88bff66}.footlogo b{font-size:19px;letter-spacing:.8px;text-shadow:0 0 18px #8d24ff55}.footlogo b span{background:linear-gradient(90deg,#b76cff,#fff,#4fc8ff);-webkit-background-clip:text;color:transparent}
+
+/* Center-focus screenshot conveyor */
+.galleryWrap{overflow:hidden;margin-inline:-20px;padding-inline:20px;position:relative}
+.screens{overflow:hidden;display:block;padding:30px 0 42px;cursor:grab;direction:ltr;touch-action:pan-y;user-select:none}
+.screens-track{display:flex;width:max-content;will-change:transform;transform:translate3d(0,0,0);align-items:center}
+.screen-set{display:flex;gap:18px;flex:none;padding-right:18px;align-items:center}
+.screen-card{position:relative;flex:0 0 245px;height:435px;border:1px solid #303653;border-radius:28px;overflow:hidden;background:#0b1020;box-shadow:0 16px 45px #0009;transform:scale(.78);opacity:.62;filter:saturate(.8) brightness(.78);transition:transform .28s cubic-bezier(.2,.8,.2,1),opacity .28s ease,filter .28s ease,box-shadow .28s ease,border-color .28s ease;will-change:transform}
+.screen-card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(120deg,transparent 35%,#fff2 50%,transparent 65%);transform:translateX(-120%);pointer-events:none;opacity:0}
+.screen-card.is-center{transform:scale(1.1);opacity:1;filter:saturate(1.08) brightness(1);z-index:4;border-color:#b24cff;box-shadow:0 24px 70px #8b2cff42,0 0 0 1px #d16cff55,0 0 45px #8d24ff22}
+.screen-card.is-center::after{opacity:1;animation:centerCardSweep 1.2s ease forwards}
+.screen-card img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.screen-card div{position:absolute;bottom:10px;left:10px;right:10px;padding:8px;border-radius:13px;text-align:center;background:#070912e8;border:1px solid #8b2cff66;font-size:12px;font-weight:800;direction:rtl;z-index:2}
+.screens.dragging{cursor:grabbing}
+@keyframes centerCardSweep{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
+
+/* One-by-one cinematic payment cards */
+.paymentsStage{position:relative;max-width:720px;height:265px;margin:8px auto 0;perspective:1200px}
+.paymentVisual{--payAccent:#a74dff;position:absolute;inset:0;overflow:hidden;border:1px solid #2c3150;border-radius:28px;padding:28px 32px;background:#080b16;opacity:0;visibility:hidden;transform:translate3d(85px,12px,0) scale(.72) rotateY(-8deg);box-shadow:0 0 0 transparent;isolation:isolate}
+.paymentVisual.paymentActive{visibility:visible;animation:paymentCardCinematic 3s cubic-bezier(.2,.82,.2,1) both}
+.paymentVisual .payBg{position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 78% 25%,color-mix(in srgb,var(--payAccent) 48%,transparent),transparent 32%),radial-gradient(circle at 12% 90%,color-mix(in srgb,var(--payAccent) 20%,transparent),transparent 35%),linear-gradient(135deg,#11162a,#070a13);animation:payBgMove 5s ease-in-out infinite}
+.paymentVisual .payBg::after{content:"";position:absolute;inset:-40%;background:linear-gradient(110deg,transparent 38%,#fff2 50%,transparent 62%);animation:paySweep 3s ease-in-out infinite}
+.paymentVisual::before{content:"";position:absolute;inset:-2px;border-radius:inherit;padding:1px;background:linear-gradient(120deg,transparent 20%,color-mix(in srgb,var(--payAccent) 90%,white) 50%,transparent 80%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.65;animation:payBorder 3s linear infinite;z-index:3}
+.paymentVisual .payMark{position:absolute;right:18px;top:-5px;font-size:150px;line-height:1;color:var(--payAccent);opacity:.07;font-weight:1000;transform:rotate(-8deg);z-index:1}
+.payIcon{position:relative;z-index:4;width:76px;height:76px;border-radius:23px;display:grid;place-items:center;background:#10162a;border:1px solid color-mix(in srgb,var(--payAccent) 62%,#303650);font-size:33px;box-shadow:0 0 35px color-mix(in srgb,var(--payAccent) 30%,transparent),inset 0 0 22px #fff1;animation:payIconPop 3s cubic-bezier(.2,.8,.2,1) both}
+.payText{position:relative;z-index:4;margin-top:18px;max-width:82%;text-align:right}.payText b{display:block;font-size:22px;font-weight:900}.payText p{margin:7px 0 0;color:#b4bad0;font-size:12px;line-height:1.9}.paymentVisual em{position:absolute;left:28px;bottom:22px;color:#6e7694;font-size:11px;font-style:normal;letter-spacing:3px;z-index:4}
+.goldPay{--payAccent:#f2bb55}.usdtPay{--payAccent:#26d39a}.mobilePay{--payAccent:#35aef2}.safePay{--payAccent:#a74dff}
+@keyframes paymentCardCinematic{0%{opacity:0;visibility:visible;transform:translate3d(95px,16px,0) scale(.68) rotateY(-10deg);filter:blur(6px)}16%{opacity:1;transform:translate3d(0,0,0) scale(1.07) rotateY(0);filter:blur(0)}34%{transform:translate3d(0,0,0) scale(1.02)}58%{opacity:1;transform:translate3d(0,0,0) scale(1)}82%{opacity:.8;transform:translate3d(-60px,-2px,0) scale(.86) rotateY(7deg);filter:blur(1px)}100%{opacity:0;visibility:hidden;transform:translate3d(-115px,-7px,0) scale(.66) rotateY(10deg);filter:blur(5px)}}
+@keyframes payIconPop{0%{transform:scale(.5) rotate(-8deg)}18%{transform:scale(1.15) rotate(2deg)}40%{transform:scale(1)}100%{transform:scale(1)}}
+@keyframes paySweep{0%,20%{transform:translateX(-55%);opacity:0}42%{opacity:1}72%,100%{transform:translateX(55%);opacity:0}}
+@keyframes payBorder{to{transform:rotate(360deg)}}
+@keyframes payBgMove{50%{transform:scale(1.08) translate3d(2%,-1%,0)}}
+
+.download{justify-content:center}.download>div{text-align:right}
+@media(max-width:600px){.galleryWrap{margin-inline:-12px;padding-inline:12px}.screens{padding:28px 0 38px}.screen-set{gap:12px;padding-right:12px}.screen-card{flex-basis:72vw;height:390px;border-radius:21px;transform:scale(.78)}.screen-card.is-center{transform:scale(1.08)}.paymentsStage{height:285px;margin-inline:2px}.paymentVisual{padding:23px 19px;border-radius:23px}.payIcon{width:62px;height:62px;border-radius:18px;font-size:27px}.payText{margin-top:13px;max-width:88%}.payText b{font-size:18px}.payText p{font-size:10px;line-height:1.85}.paymentVisual em{left:17px;bottom:15px;font-size:8px}.paymentVisual .payMark{font-size:115px;right:12px}.download>div{text-align:right}}
