@@ -335,3 +335,21 @@ const response=await fetch('/api/support',{
     }
   });
 }
+
+
+// Chargily video play button
+document.querySelectorAll('.chargilyVideoWrap').forEach((wrap) => {
+  const video = wrap.querySelector('.chargilyVideo');
+  const play = wrap.querySelector('.chargilyVideoPlay');
+  if (!video || !play) return;
+  play.addEventListener('click', async () => {
+    try {
+      await video.play();
+      wrap.classList.add('is-playing');
+    } catch (e) {
+      wrap.classList.remove('is-playing');
+    }
+  });
+  video.addEventListener('play', () => wrap.classList.add('is-playing'));
+  video.addEventListener('pause', () => wrap.classList.remove('is-playing'));
+});
