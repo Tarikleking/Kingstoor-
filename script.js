@@ -1,13 +1,53 @@
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}}));
-// Download button: the APK is still under development, so never navigate/download.
-// Use delegated clicks so the button keeps working even if the page is rebuilt dynamically.
-const showDevModal=()=>{
-  const modal=document.getElementById('devModal');
-  if(modal) modal.classList.add('show');
+// Download button: the APK is still under development. Show a dedicated modal instead of navigating.
+const ensureDevModal=()=>{
+  let modal=document.getElementById('devModal');
+  if(modal) return modal;
+
+  modal=document.createElement('div');
+  modal.id='devModal';
+  modal.className='devModal';
+  modal.setAttribute('aria-hidden','true');
+  modal.innerHTML=`
+    <div class="devModalBox" role="dialog" aria-modal="true" aria-labelledby="devModalTitle">
+      <div class="devIcon">🚧</div>
+      <h3 id="devModalTitle">التطبيق قيد التطوير</h3>
+      <p>تطبيق KingstooR سيكون متاحاً للتحميل قريباً.</p>
+      <button id="devClose" type="button">حسناً</button>
+    </div>`;
+
+  document.body.appendChild(modal);
+
+  if(!document.getElementById('devModalRuntimeStyle')){
+    const style=document.createElement('style');
+    style.id='devModalRuntimeStyle';
+    style.textContent=`
+      .devModal{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(2,4,12,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+      .devModal.show{display:flex}
+      .devModalBox{width:min(92vw,390px);padding:28px 22px;text-align:center;border:1px solid #303653;border-radius:24px;background:linear-gradient(145deg,#101426,#080b15);box-shadow:0 25px 80px rgba(0,0,0,.65),0 0 35px rgba(167,77,255,.16);color:#fff;animation:devModalIn .22s ease-out}
+      .devIcon{font-size:42px;line-height:1;margin-bottom:14px}
+      .devModalBox h3{margin:0 0 9px;font-size:22px;font-weight:950}
+      .devModalBox p{margin:0 auto 20px;color:#b8bed2;font-size:13px;line-height:1.9}
+      .devModalBox button{border:0;border-radius:12px;padding:11px 28px;background:linear-gradient(90deg,#a74dff,#ff4d9d);color:#fff;font-weight:900;font-size:13px;cursor:pointer;box-shadow:0 8px 25px rgba(167,77,255,.25)}
+      @keyframes devModalIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}`;
+    document.head.appendChild(style);
+  }
+
+  return modal;
 };
+
+const showDevModal=()=>{
+  const modal=ensureDevModal();
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+};
+
 const hideDevModal=()=>{
   const modal=document.getElementById('devModal');
-  if(modal) modal.classList.remove('show');
+  if(modal){
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+  }
 };
 
 document.addEventListener('click',e=>{
@@ -28,6 +68,10 @@ document.addEventListener('click',e=>{
   if(e.target.id==='devModal'){
     hideDevModal();
   }
+});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') hideDevModal();
 });
 
 // Continuous screenshot conveyor with center-focus scaling and drag support.
