@@ -6,6 +6,21 @@
 .featureSection{padding-top:40px}.featureIntro{text-align:center;max-width:650px;margin:0 auto 25px}.featureIntro h2{font-size:40px;margin:4px 0}.featureIntro p{color:var(--muted);margin:0}.featureGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.featureGrid article{background:#0b1020;border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center}.featureGrid span{font-size:28px}.featureGrid h3{margin:8px 0 4px}.featureGrid p{margin:0;color:var(--muted);font-size:11px;line-height:1.8}
 .screensSection{padding-top:50px}.galleryWrap{position:relative}.screens{display:flex;gap:16px;overflow-x:auto;overflow-y:hidden;padding:5px 3px 18px;scroll-snap-type:x mandatory;cursor:grab;user-select:none;-webkit-overflow-scrolling:touch;scrollbar-width:none;direction:ltr}.screens::-webkit-scrollbar{display:none}.screen-card{position:relative;flex:0 0 245px;height:435px;scroll-snap-align:start;border:1px solid #2c3150;border-radius:22px;overflow:hidden;background:#0b1020;box-shadow:0 12px 38px #0008}.screen-card img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none}.screen-card div{position:absolute;bottom:10px;left:10px;right:10px;padding:8px;border-radius:13px;text-align:center;background:#070912dd;border:1px solid #8b2cff66;font-size:12px;font-weight:800;direction:rtl}.screens.dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
 .payments{grid-template-columns:repeat(4,1fr)}.payments article{font-size:28px;display:flex;flex-direction:column;justify-content:center;gap:6px}.payments strong{font-size:14px}.payments small{font-size:9px}
+
+
+/* Chargily Pay trust/payment block */
+.chargilyTrust{padding-top:0}
+.chargilyTrustCard{position:relative;max-width:720px;margin:0 auto;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 26px;border:1px solid #2c3150;border-radius:26px;background:linear-gradient(135deg,#0b0f1d,#080a13);box-shadow:0 18px 55px #0005;isolation:isolate}
+.chargilyTrustGlow{position:absolute;inset:-35%;z-index:-1;background:radial-gradient(circle at 78% 50%,#ff6b1833,transparent 30%),radial-gradient(circle at 12% 20%,#a74dff22,transparent 32%);filter:blur(18px);pointer-events:none}
+.chargilyTrustMain{position:relative;z-index:2;text-align:right;flex:1}
+.chargilyTrustBadge{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid #3b3556;border-radius:999px;background:#151226;color:#cfc8e9;font-size:11px;font-weight:800}
+.chargilyTrustMain h2{margin:10px 0 5px;font-size:28px;font-weight:950;letter-spacing:-.5px}.chargilyTrustMain h2 span{background:linear-gradient(90deg,#ff8a3d,#ff4d9d,#a74dff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.chargilyTrustMain p{margin:0;color:#b8bed2;font-size:12px;line-height:1.95;max-width:590px}.chargilyTrustMain p b{color:#f0f2fa}
+.chargilyMethods{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.chargilyMethods span{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:0 11px;border-radius:9px;border:1px solid #303650;background:#111526;color:#e5e8f3;font-size:10px;font-weight:900;letter-spacing:.2px}
+.chargilyTrustMain small{display:block;margin-top:11px;color:#7f87a5;font-size:10px;line-height:1.7}
+.chargilyTrustLink{position:relative;z-index:2;flex:0 0 auto;display:inline-flex;align-items:center;gap:9px;padding:12px 15px;border-radius:13px;border:1px solid #49365b;background:#171226;color:#fff;text-decoration:none;font-size:11px;font-weight:900;white-space:nowrap;transition:.25s ease}.chargilyTrustLink b{font-size:17px;color:#ff7b55}.chargilyTrustLink:hover{transform:translateY(-2px);border-color:#a74dff;box-shadow:0 10px 28px #a74dff22}
+@media(max-width:600px){.chargilyTrustCard{display:block;padding:21px 18px;border-radius:22px}.chargilyTrustMain h2{font-size:24px}.chargilyTrustMain p{font-size:11px}.chargilyTrustLink{margin-top:16px;width:100%;justify-content:center}.chargilyMethods span{font-size:9px;padding-inline:9px}}
+
 .download{max-width:1140px;margin:15px auto 45px;padding:24px 28px;display:flex;align-items:center;gap:18px;border:1px solid #a536ff;border-radius:22px;background:linear-gradient(100deg,#4d148055,#10183bcc,#7b167444);box-shadow:0 0 45px #8a26ff1d}.download img{width:68px;height:68px;border-radius:18px;object-fit:cover}.download>div{flex:1}.download span{color:#cb91ff;font-size:12px}.download h2{margin:0;font-size:25px}.download p{margin:0;color:var(--muted);font-size:12px}.faqgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.faq details{background:#080d1c;border:1px solid var(--line);border-radius:14px;padding:14px}.faq summary{cursor:pointer;font-weight:700;font-size:13px}.faq details p{color:var(--muted);font-size:11px;line-height:1.8}
 footer{padding:28px max(20px,calc((100% - var(--max))/2));border-top:1px solid #211d5c;background:#02030a;display:grid;grid-template-columns:1fr 2fr;align-items:center;gap:15px}.footlogo{display:flex;align-items:center;gap:8px}.links{display:flex;justify-content:center;gap:20px;color:#aeb3d0;font-size:11px}footer p{grid-column:1/-1;text-align:center;color:#626987;font-size:9px;border-top:1px solid #15173b;padding-top:13px;margin:0}
 @media(max-width:1000px){.nav nav{display:none}.hero{padding-top:22px}.heroCard{width:100%;margin:auto}.grid{grid-template-columns:repeat(3,1fr)}.featureGrid{grid-template-columns:repeat(2,1fr)}.payments{grid-template-columns:repeat(2,1fr)}footer{grid-template-columns:1fr;text-align:center}.footlogo{justify-content:center}.links{flex-wrap:wrap}}
@@ -146,40 +161,3 @@ body.modalOpen{overflow:hidden}
 .policyTabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px 0 14px;padding:6px;border:1px solid #252b46;border-radius:17px;background:#070a15}.policyTab{border:0;border-radius:12px;padding:11px 8px;background:transparent;color:#969eb8;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;transition:.3s}.policyTab.active{color:#fff;background:linear-gradient(90deg,#8125e9,#d52b8d);box-shadow:0 8px 25px #8d24ff22}.policyContent{display:none;position:relative;min-height:230px;padding:26px 25px 25px;border:1px solid #282e4b;border-radius:22px;background:linear-gradient(145deg,#10162a,#080b16);overflow:hidden;animation:policyContentIn .4s ease}.policyContent.active{display:block}.policyContent::after{content:"";position:absolute;width:220px;height:220px;left:-100px;bottom:-120px;border-radius:50%;background:#8d24ff;filter:blur(65px);opacity:.11}.policyNum{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#8d24ff14;border:1px solid #a64dff55;color:#d296ff;font-size:10px;font-weight:900}.policyContent h3{font-size:20px;margin:17px 0 8px}.policyContent p{max-width:760px;margin:0;color:#aeb5cc;font-size:12px;line-height:2.05}.policySecurity{display:flex;align-items:center;gap:12px;margin-top:14px;padding:14px 16px;border-radius:16px;border:1px solid #35d39a42;background:linear-gradient(90deg,#0b211b,#091119);color:#a6bdb5;font-size:10px;line-height:1.8}.policySecurity b{color:#57e0ad;white-space:nowrap}
 @keyframes policyIconFloat{50%{transform:translateY(-4px) rotate(2deg);box-shadow:0 0 45px #8d24ff35}}@keyframes policyContentIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(max-width:700px){.nav nav{overflow-x:auto;justify-content:flex-start;white-space:nowrap}.nav nav a{padding:8px 9px;font-size:10px}.navbtn{display:none}.policyModal{padding:10px}.policyPanel{padding:20px 15px;border-radius:23px;max-height:94vh}.policyPanelHead{padding-left:42px;gap:10px}.policyPanelIcon{width:48px;height:48px;flex-basis:48px;border-radius:15px}.policyPanelHead h2{font-size:18px}.policyPanelHead p{font-size:9px}.policyTabs{grid-template-columns:1fr 1fr;gap:6px}.policyTab{font-size:9px;padding:10px 5px}.policyContent{min-height:270px;padding:20px 17px}.policyContent h3{font-size:16px}.policyContent p{font-size:10px}.policySecurity{align-items:flex-start;flex-direction:column;gap:4px;font-size:9px}}
-
-/* Draggable WhatsApp support button */
-.whatsappFloat{
-  position:fixed;
-  right:20px;
-  bottom:25px;
-  z-index:9990;
-  width:54px;
-  height:54px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:#25D366;
-  color:#fff;
-  text-decoration:none;
-  box-shadow:0 8px 25px #0008,0 0 20px #25D36655;
-  cursor:grab;
-  touch-action:none;
-  user-select:none;
-  -webkit-user-select:none;
-  transition:transform .2s ease,box-shadow .2s ease;
-}
-.whatsappFloat:active{cursor:grabbing}
-.whatsappFloat span{font-size:25px;line-height:1}
-.whatsappFloat:hover{transform:scale(1.06);box-shadow:0 12px 30px #0009,0 0 28px #25D36677}
-@media(max-width:700px){
-  .whatsappFloat{width:50px;height:50px;right:15px;bottom:20px}
-  .whatsappFloat span{font-size:23px}
-}
-
-.whatsappFloat span svg{
-  width:28px;
-  height:28px;
-  display:block;
-  fill:#fff;
-}
