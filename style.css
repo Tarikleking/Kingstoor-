@@ -29,7 +29,7 @@
 .download{max-width:1140px;margin:15px auto 45px;padding:24px 28px;display:flex;align-items:center;gap:18px;border:1px solid #a536ff;border-radius:22px;background:linear-gradient(100deg,#4d148055,#10183bcc,#7b167444);box-shadow:0 0 45px #8a26ff1d}.download img{width:68px;height:68px;border-radius:18px;object-fit:cover}.download>div{flex:1}.download span{color:#cb91ff;font-size:12px}.download h2{margin:0;font-size:25px}.download p{margin:0;color:var(--muted);font-size:12px}.faqgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.faq details{background:#080d1c;border:1px solid var(--line);border-radius:14px;padding:14px}.faq summary{cursor:pointer;font-weight:700;font-size:13px}.faq details p{color:var(--muted);font-size:11px;line-height:1.8}
 footer{padding:28px max(20px,calc((100% - var(--max))/2));border-top:1px solid #211d5c;background:#02030a;display:grid;grid-template-columns:1fr 2fr;align-items:center;gap:15px}.footlogo{display:flex;align-items:center;gap:8px}.links{display:flex;justify-content:center;gap:20px;color:#aeb3d0;font-size:11px}footer p{grid-column:1/-1;text-align:center;color:#626987;font-size:9px;border-top:1px solid #15173b;padding-top:13px;margin:0}
 @media(max-width:1000px){.nav{flex-wrap:wrap;height:auto;min-height:62px;padding-top:7px;padding-bottom:7px}.nav nav{display:flex;order:3;flex-basis:100%;width:100%;overflow-x:auto;justify-content:flex-start;white-space:nowrap;padding:3px 0 2px;scrollbar-width:none}.nav nav::-webkit-scrollbar{display:none}.nav nav a{font-size:10px;padding:8px 10px}.navbtn{display:none}.hero{padding-top:22px}.heroCard{width:100%;margin:auto}.grid{grid-template-columns:repeat(3,1fr)}.featureGrid{grid-template-columns:repeat(2,1fr)}.payments{grid-template-columns:repeat(2,1fr)}footer{grid-template-columns:1fr;text-align:center}.footlogo{justify-content:center}.links{flex-wrap:wrap}}
-@media(max-width:600px){.nav{height:auto;min-height:112px;align-items:center;gap:8px;padding:8px 10px 6px}.navbtn{padding:8px 11px;font-size:10px}.logo b{font-size:15px}.logo img{width:38px;height:38px}.hero{padding:12px 10px 38px}.heroCard{border-radius:20px}.heroCard .heroImage{width:100%;height:auto;border-radius:19px}.heroCard strong{font-size:20px}.section{padding:45px 12px}.grid{grid-template-columns:1fr 1fr;gap:9px}.grid article{min-height:132px;padding:14px 6px}.title{margin-bottom:22px}.title h2{font-size:27px}.title p{font-size:10px}.featureIntro h2{font-size:31px}.featureGrid{grid-template-columns:1fr 1fr;gap:9px}.featureGrid article{padding:17px 8px}.screens{gap:11px;margin-inline:-2px;padding-inline:3px 18px}.screen-card{flex-basis:72vw;height:390px;border-radius:19px}.download{margin:0 12px 38px;padding:17px;flex-wrap:wrap}.download>div{min-width:calc(100% - 88px)}.download .btn{width:100%;text-align:center}.faqgrid{grid-template-columns:1fr}}
+@media(max-width:600px){.nav{height:62px}.navbtn{padding:8px 11px;font-size:10px}.logo b{font-size:15px}.logo img{width:38px;height:38px}.hero{padding:12px 10px 38px}.heroCard{border-radius:20px}.heroCard .heroImage{width:100%;height:auto;border-radius:19px}.heroCard strong{font-size:20px}.section{padding:45px 12px}.grid{grid-template-columns:1fr 1fr;gap:9px}.grid article{min-height:132px;padding:14px 6px}.title{margin-bottom:22px}.title h2{font-size:27px}.title p{font-size:10px}.featureIntro h2{font-size:31px}.featureGrid{grid-template-columns:1fr 1fr;gap:9px}.featureGrid article{padding:17px 8px}.screens{gap:11px;margin-inline:-2px;padding-inline:3px 18px}.screen-card{flex-basis:72vw;height:390px;border-radius:19px}.download{margin:0 12px 38px;padding:17px;flex-wrap:wrap}.download>div{min-width:calc(100% - 88px)}.download .btn{width:100%;text-align:center}.faqgrid{grid-template-columns:1fr}}
 
 /* Cinematic services showcase — one service at a time */
 .servicesStage{position:relative;width:100%;max-width:620px;height:210px;margin:0 auto;perspective:1200px;display:block;overflow:hidden;touch-action:pan-y;overscroll-behavior-x:none;contain:layout paint;user-select:none;-webkit-user-select:none}
@@ -279,201 +279,148 @@ body.modalOpen{overflow:hidden}
 @media(max-width:600px){.supportEmailModal{padding:8px}.supportEmailPanel{width:calc(100vw - 16px);max-height:94vh;padding:17px 13px;border-radius:22px}.supportEmailPanel>.title{padding-inline:34px}.supportEmailCard{padding:15px}.supportEmailForm{grid-template-columns:1fr}.supportMessageField,.supportEmailSubmit,.supportEmailForm small,.supportEmailResult{grid-column:1}.supportEmailClose{width:34px;height:34px;font-size:22px}}
 
 
-/* Chargily video — autoplay + controls + full-card shine */
-.chargilyTrustCard{
-  position:relative;
-}
+/* Chargily Pay — final video placement, autoplay controls + full-card shine */
+.chargilyTrustCard{position:relative;isolation:isolate}
 .chargilyTrustCard::after{
-  content:"";
-  position:absolute;
-  inset:-45%;
-  z-index:4;
-  pointer-events:none;
-  background:linear-gradient(112deg,transparent 43%,rgba(255,255,255,.035) 47%,rgba(194,110,255,.20) 50%,rgba(255,255,255,.08) 52%,transparent 57%);
-  transform:translateX(-58%) rotate(8deg);
-  animation:chargilyFullShine 5.8s ease-in-out infinite;
-  mix-blend-mode:screen;
+  content:"";position:absolute;inset:-45%;z-index:8;pointer-events:none;
+  background:linear-gradient(112deg,transparent 43%,rgba(255,255,255,.04) 47%,rgba(194,110,255,.22) 50%,rgba(255,255,255,.09) 52%,transparent 57%);
+  transform:translateX(-58%) rotate(8deg);animation:chargilyFullShine 5.8s ease-in-out infinite;mix-blend-mode:screen;
 }
-.chargilyMediaRow{
-  direction:ltr;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 185px;
-  align-items:center;
-  gap:14px;
-  margin-top:15px;
-  position:relative;
-  z-index:5;
-}
-.chargilyVideoWrap{
-  position:relative;
-  width:100%;
-  min-height:92px;
-  border-radius:16px;
-  overflow:hidden;
-  background:#090b18;
-  border:1px solid rgba(176,82,255,.55);
-  box-shadow:0 0 28px rgba(141,36,255,.13),inset 0 0 25px rgba(255,255,255,.035);
-}
-.chargilyVideo{
-  display:block;
-  width:100%;
-  height:108px;
-  object-fit:cover;
-  background:#090b18;
-}
-.chargilyDiscover{
-  direction:rtl;
-  min-height:58px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:12px 15px;
-  border-radius:16px;
-  border:1px solid rgba(190,92,255,.65);
-  background:linear-gradient(100deg,#741cff,#b52cff,#ff3c9c);
-  color:#fff;
-  font-size:11px;
-  font-weight:950;
-  box-shadow:0 10px 30px rgba(141,36,255,.24),inset 0 1px 0 rgba(255,255,255,.22);
-  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
-}
-.chargilyDiscover:hover{
-  transform:translateY(-3px) scale(1.02);
-  filter:saturate(1.12);
-  box-shadow:0 16px 38px rgba(141,36,255,.42),0 0 28px rgba(255,60,156,.18);
-}
-.chargilyDiscover b{font-size:17px;color:#fff}
-@keyframes chargilyFullShine{0%,18%{transform:translateX(-65%) rotate(8deg);opacity:0}35%{opacity:1}62%,100%{transform:translateX(65%) rotate(8deg);opacity:0}}
+.chargilyTrustMain,.chargilyTrustSide{z-index:2}
+.chargilyMediaRow{direction:ltr;display:flex;align-items:center;justify-content:flex-end;gap:14px;margin-top:15px;position:relative;z-index:3}
+.chargilyDiscover{direction:rtl;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:16px;border:1px solid rgba(190,92,255,.7);background:linear-gradient(100deg,#741cff,#b52cff,#ff3c9c);color:#fff;font-size:11px;font-weight:950;box-shadow:0 10px 30px rgba(141,36,255,.24),inset 0 1px 0 rgba(255,255,255,.22);transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+.chargilyDiscover b{font-size:14px}.chargilyDiscover:hover{transform:translateY(-3px) scale(1.02);filter:saturate(1.12);box-shadow:0 16px 38px rgba(141,36,255,.42),0 0 28px rgba(255,60,156,.18)}
+.chargilyVideoSide{padding:10px;gap:8px;overflow:hidden}
+.chargilyVideoFrame{width:100%;height:238px;min-height:0;border-radius:15px;overflow:hidden;border:1px solid rgba(190,92,255,.7);background:#050711;box-shadow:0 0 26px rgba(141,36,255,.18),inset 0 0 20px rgba(255,255,255,.035)}
+.chargilyVideo{display:block;width:100%;height:100%;object-fit:cover;background:#050711}
+.chargilyVideoSide strong{font-size:8px;color:#aeb6cd;text-align:center;line-height:1.5}
+@keyframes chargilyFullShine{0%,18%{transform:translateX(-70%) rotate(8deg);opacity:0}28%{opacity:.85}52%,100%{transform:translateX(70%) rotate(8deg);opacity:0}}
 @media(max-width:700px){
-  .chargilyTrust{padding:10px 10px 0}
-  .chargilyTrustCard{display:grid;grid-template-columns:minmax(0,1fr) 138px;gap:10px;padding:14px;border-radius:22px;align-items:stretch}
-  .chargilyTrustMain{min-width:0}
-  .chargilyTrustTop{gap:7px}
-  .chargilyTrustBadge{font-size:8px;padding:6px 8px}
-  .chargilyOfficial{font-size:9px}
-  .chargilyTrustMain h2{font-size:19px;line-height:1.55;margin:10px 0 5px}
-  .chargilyTrustMain p{font-size:8px;line-height:1.8}
-  .chargilyMethods{gap:5px;margin-top:9px}
-  .chargilyMethods span{font-size:7px;min-height:25px;padding:0 7px}
-  .chargilyMediaRow{direction:rtl;display:flex;flex-direction:column;justify-content:center;gap:8px;margin:0;min-width:0}
-  .chargilyVideoWrap{width:100%;height:230px;min-height:230px;border-radius:15px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .chargilyVideo{width:100%;height:100%;object-fit:contain;border:0;border-radius:0;background:#050711}
-  .chargilyDiscover{width:100%;min-height:42px;padding:8px 6px;border-radius:12px;font-size:8px;text-align:center;gap:4px}
-  .chargilyDiscover b{font-size:12px}
-  .chargilySecurityNote{font-size:7px;margin-top:8px;line-height:1.6}
-  .chargilyTrustSide{grid-column:1/-1;margin-top:0;display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:8px}
-  .chargilySideLogo{grid-column:1/-1;font-size:23px}
-  .chargilyTrustSide strong{font-size:7px}
-  .chargilyTrustLink{font-size:8px;padding:8px}
-}
-@media(max-width:430px){
-  .nav{min-height:116px}
-  .logo b{font-size:14px}
-  .logo img{width:36px;height:36px}
-  .chargilyTrustCard{grid-template-columns:minmax(0,1fr) 122px;gap:8px;padding:12px}
-  .chargilyVideoWrap{height:210px;min-height:210px}
-  .chargilyTrustMain h2{font-size:17px}
-  .chargilyTrustMain p{font-size:7.5px}
-  .chargilyDiscover{font-size:7.5px}
+  .chargilyTrustCard{display:grid;grid-template-columns:135px minmax(0,1fr);gap:12px;padding:15px;border-radius:22px;align-items:stretch}
+  .chargilyTrustMain{grid-column:2;grid-row:1}
+  .chargilyTrustSide{grid-column:1;grid-row:1;margin:0;min-width:0;padding:8px}
+  .chargilyVideoFrame{height:205px;border-radius:13px}
+  .chargilyVideoSide strong{font-size:7px}
+  .chargilyTrustTop{align-items:flex-start}.chargilyOfficial{font-size:9px}
+  .chargilyTrustMain h2{font-size:20px;line-height:1.5;margin-top:9px}
+  .chargilyTrustMain p{font-size:9px;line-height:1.8}
+  .chargilyMethods{gap:5px;margin-top:9px}.chargilyMethods span{font-size:7px;padding-inline:7px;min-height:25px}
+  .chargilyMediaRow{margin-top:10px}.chargilyDiscover{width:100%;min-height:43px;padding:8px 10px;font-size:9px;border-radius:13px}
+  .chargilySecurityNote{font-size:7px;margin-top:7px}
 }
 
-/* Final responsive polish: compact mobile, original desktop scale */
-@media (max-width: 600px){
-  :root{--mobile-scale:clamp(.82, calc(100vw / 430), 1);}
-  .nav{min-height:auto;padding:7px 10px 6px;gap:6px}
-  .logo b{font-size:clamp(13px,3.5vw,15px)}
-  .logo img{width:clamp(34px,9vw,38px);height:clamp(34px,9vw,38px)}
-  .nav nav{gap:2px;padding:2px 0 1px}
-  .nav nav a{font-size:clamp(9px,2.5vw,10px);padding:7px 9px}
+/* FINAL MOBILE RESPONSIVE OVERRIDE — compact, preserves desktop composition */
+@media (max-width: 700px){
+  /* Header keeps its own space; never overlaps the hero */
+  .nav{
+    height:auto !important;
+    min-height:0 !important;
+    flex-wrap:wrap;
+    padding:7px 10px 6px !important;
+    gap:5px !important;
+  }
+  .nav nav{
+    order:3;
+    flex-basis:100%;
+    width:100%;
+    min-width:0;
+    overflow-x:auto;
+    justify-content:flex-start;
+    white-space:nowrap;
+    padding:2px 0 !important;
+  }
+  .nav nav a{font-size:clamp(9px,2.35vw,10px) !important;padding:6px 8px !important}
+  .hero{padding:10px 10px 28px !important}
+  .heroCard{width:100%;margin:0 auto;border-radius:18px}
+  .heroCard .heroImage{width:100%;height:auto;aspect-ratio:auto;object-fit:contain;transform:none}
 
-  .hero{padding:10px 10px 28px}
-  .heroCard{border-radius:18px}
-  .heroCard .heroImage{border-radius:17px;transform:none;animation:none}
+  /* Reduce section breathing room on phones */
+  .section{padding:30px 10px !important}
+  .chargilyTrust{padding:18px 10px 12px !important}
 
-  .section{padding:38px 10px}
-  .title{gap:9px;margin-bottom:18px}
-  .title h2{font-size:clamp(23px,6.3vw,27px)}
-  .title p{font-size:clamp(8px,2.4vw,10px)}
-
-  .servicesStage{height:clamp(165px,44vw,190px)}
-  .serviceVisual{padding:18px 15px;border-radius:19px}
-  .visualIcon{width:clamp(50px,14vw,58px);height:clamp(50px,14vw,58px)}
-  .visualIcon span{font-size:clamp(24px,7vw,28px)}
-  .visualText b{font-size:clamp(15px,4.5vw,17px)}
-
-  .paymentsStage{height:clamp(235px,68vw,285px)}
-  .paymentVisual{padding:18px 15px;border-radius:20px}
-  .payIcon{width:clamp(54px,15vw,62px);height:clamp(54px,15vw,62px);font-size:clamp(24px,7vw,27px)}
-  .payText b{font-size:clamp(15px,4.7vw,18px)}
-  .payText p{font-size:clamp(8px,2.5vw,10px)}
-
-  /* Chargily: keep the desktop composition, but scale every part down cleanly. */
-  .chargilyTrust{padding:8px 10px 0}
+  /* Chargily: same desktop composition, simply scaled down */
   .chargilyTrustCard{
     width:100%;
     max-width:none;
-    display:grid;
-    grid-template-columns:minmax(0,1fr) clamp(100px,27vw,122px);
-    gap:clamp(7px,2vw,10px);
-    padding:clamp(10px,3vw,14px);
-    border-radius:clamp(18px,5vw,22px);
+    display:grid !important;
+    grid-template-columns:clamp(105px,28vw,125px) minmax(0,1fr) !important;
+    grid-template-rows:auto !important;
+    gap:clamp(8px,2.4vw,11px) !important;
+    padding:clamp(10px,3vw,13px) !important;
+    border-radius:clamp(18px,5vw,22px) !important;
+    align-items:stretch !important;
   }
-  .chargilyTrustTop{gap:5px;align-items:center}
-  .chargilyTrustBadge{font-size:clamp(7px,2vw,8px);padding:5px 7px}
-  .chargilyOfficial{font-size:clamp(8px,2.3vw,9px)}
-  .chargilyTrustMain h2{font-size:clamp(16px,4.7vw,19px);line-height:1.42;margin:8px 0 5px}
-  .chargilyTrustMain p{font-size:clamp(7px,2.1vw,8px);line-height:1.7}
-  .chargilyMethods{gap:4px;margin-top:7px}
-  .chargilyMethods span{font-size:clamp(6.5px,1.9vw,7.5px);min-height:23px;padding:0 6px}
+  .chargilyTrustMain{
+    grid-column:2 !important;
+    grid-row:1 !important;
+    min-width:0 !important;
+  }
+  .chargilyTrustSide{
+    grid-column:1 !important;
+    grid-row:1 !important;
+    margin:0 !important;
+    min-width:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:center !important;
+    padding:6px !important;
+    gap:5px !important;
+    overflow:hidden !important;
+  }
+  .chargilyVideoFrame{
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:9 / 16 !important;
+    max-height:175px !important;
+    border-radius:10px !important;
+  }
+  .chargilyVideo{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+  }
+  .chargilyVideoSide strong{display:none !important}
+
+  .chargilyTrustTop{gap:5px !important;align-items:center !important}
+  .chargilyTrustBadge{font-size:clamp(7px,1.9vw,8px) !important;padding:5px 7px !important}
+  .chargilyOfficial{font-size:clamp(8px,2.1vw,9px) !important}
+  .chargilyTrustMain h2{
+    font-size:clamp(16px,4.8vw,19px) !important;
+    line-height:1.4 !important;
+    margin:7px 0 5px !important;
+  }
+  .chargilyTrustMain p{
+    font-size:clamp(7px,2vw,8px) !important;
+    line-height:1.7 !important;
+  }
+  .chargilyMethods{gap:4px !important;margin-top:7px !important}
+  .chargilyMethods span{font-size:clamp(6.5px,1.8vw,7.5px) !important;min-height:22px !important;padding:0 6px !important}
   .chargilyMediaRow{
-    direction:ltr;
-    display:grid;
-    grid-template-columns:minmax(0,1fr) clamp(82px,23vw,105px);
-    gap:clamp(6px,2vw,8px);
-    align-items:center;
-    margin-top:9px;
+    display:block !important;
+    margin-top:8px !important;
   }
-  .chargilyVideoWrap{
-    width:100%;
-    height:auto;
-    min-height:0;
-    aspect-ratio:16/9;
-    border-radius:11px;
-  }
-  .chargilyVideo{width:100%;height:100%;object-fit:cover}
   .chargilyDiscover{
-    width:100%;
-    min-height:40px;
-    padding:7px 5px;
-    border-radius:11px;
-    font-size:clamp(7px,2vw,8px);
-    line-height:1.35;
+    width:100% !important;
+    min-height:38px !important;
+    padding:7px 6px !important;
+    border-radius:11px !important;
+    font-size:clamp(7px,2vw,8.5px) !important;
+    line-height:1.25 !important;
   }
-  .chargilyDiscover b{font-size:11px}
-  .chargilySecurityNote{font-size:clamp(6px,1.8vw,7px);margin-top:6px}
-  .chargilyTrustSide{padding:7px;gap:5px}
-  .chargilySideLogo{font-size:clamp(19px,6vw,23px)}
-  .chargilyTrustSide strong{font-size:clamp(6px,1.8vw,7px)}
-  .chargilyTrustLink{font-size:clamp(7px,2vw,8px);padding:7px}
-
-  .faqgrid{gap:8px}
-  .faqItem summary{padding:13px 12px;font-size:clamp(10px,2.8vw,11px)}
-  .faqItem p{padding:0 12px 13px;font-size:clamp(8px,2.5vw,10px)}
-
-  .download{margin:0 10px 28px;padding:15px;}
-  .download h2{font-size:clamp(19px,5.5vw,21px)}
-  .download p{font-size:clamp(9px,2.5vw,10px)}
-  .downloadBtn{min-height:50px;font-size:clamp(10px,2.8vw,12px);margin-top:12px}
+  .chargilyDiscover b{font-size:11px !important}
+  .chargilySecurityNote{font-size:clamp(6px,1.7vw,7px) !important;margin-top:5px !important;line-height:1.5 !important}
 }
 
-@media (max-width: 430px){
-  .section{padding-inline:9px}
-  .chargilyTrustCard{grid-template-columns:minmax(0,1fr) 98px;padding:10px;gap:7px}
-  .chargilyTrustMain h2{font-size:16px}
-  .chargilyTrustMain p{font-size:7px}
-  .chargilyMediaRow{grid-template-columns:minmax(0,1fr) 78px;gap:6px}
-  .chargilyDiscover{min-height:37px;font-size:7px}
-  .chargilyVideoWrap{border-radius:10px}
-  .chargilySecurityNote{font-size:6px}
+@media (max-width:430px){
+  .section{padding:26px 9px !important}
+  .chargilyTrust{padding:14px 9px 8px !important}
+  .chargilyTrustCard{
+    grid-template-columns:112px minmax(0,1fr) !important;
+    gap:8px !important;
+    padding:9px !important;
+  }
+  .chargilyVideoFrame{max-height:160px !important}
+  .chargilyTrustMain h2{font-size:16px !important}
+  .chargilyTrustMain p{font-size:7px !important}
+  .chargilyDiscover{min-height:36px !important;font-size:7.2px !important}
 }
