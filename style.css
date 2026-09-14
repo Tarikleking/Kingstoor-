@@ -279,76 +279,32 @@ body.modalOpen{overflow:hidden}
 @media(max-width:600px){.supportEmailModal{padding:8px}.supportEmailPanel{width:calc(100vw - 16px);max-height:94vh;padding:17px 13px;border-radius:22px}.supportEmailPanel>.title{padding-inline:34px}.supportEmailCard{padding:15px}.supportEmailForm{grid-template-columns:1fr}.supportMessageField,.supportEmailSubmit,.supportEmailForm small,.supportEmailResult{grid-column:1}.supportEmailClose{width:34px;height:34px;font-size:22px}}
 
 
-/* Chargily video — autoplay + controls + full-card shine */
-.chargilyTrustCard{
-  position:relative;
-}
+/* Chargily Pay — final video placement, autoplay controls + full-card shine */
+.chargilyTrustCard{position:relative;isolation:isolate}
 .chargilyTrustCard::after{
-  content:"";
-  position:absolute;
-  inset:-45%;
-  z-index:4;
-  pointer-events:none;
-  background:linear-gradient(112deg,transparent 43%,rgba(255,255,255,.035) 47%,rgba(194,110,255,.20) 50%,rgba(255,255,255,.08) 52%,transparent 57%);
-  transform:translateX(-58%) rotate(8deg);
-  animation:chargilyFullShine 5.8s ease-in-out infinite;
-  mix-blend-mode:screen;
+  content:"";position:absolute;inset:-45%;z-index:8;pointer-events:none;
+  background:linear-gradient(112deg,transparent 43%,rgba(255,255,255,.04) 47%,rgba(194,110,255,.22) 50%,rgba(255,255,255,.09) 52%,transparent 57%);
+  transform:translateX(-58%) rotate(8deg);animation:chargilyFullShine 5.8s ease-in-out infinite;mix-blend-mode:screen;
 }
-.chargilyMediaRow{
-  direction:ltr;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 185px;
-  align-items:center;
-  gap:14px;
-  margin-top:15px;
-  position:relative;
-  z-index:5;
-}
-.chargilyVideoWrap{
-  position:relative;
-  width:100%;
-  min-height:92px;
-  border-radius:16px;
-  overflow:hidden;
-  background:#090b18;
-  border:1px solid rgba(176,82,255,.55);
-  box-shadow:0 0 28px rgba(141,36,255,.13),inset 0 0 25px rgba(255,255,255,.035);
-}
-.chargilyVideo{
-  display:block;
-  width:100%;
-  height:108px;
-  object-fit:cover;
-  background:#090b18;
-}
-.chargilyDiscover{
-  direction:rtl;
-  min-height:58px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:12px 15px;
-  border-radius:16px;
-  border:1px solid rgba(190,92,255,.65);
-  background:linear-gradient(100deg,#741cff,#b52cff,#ff3c9c);
-  color:#fff;
-  font-size:11px;
-  font-weight:950;
-  box-shadow:0 10px 30px rgba(141,36,255,.24),inset 0 1px 0 rgba(255,255,255,.22);
-  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
-}
-.chargilyDiscover:hover{
-  transform:translateY(-3px) scale(1.02);
-  filter:saturate(1.12);
-  box-shadow:0 16px 38px rgba(141,36,255,.42),0 0 28px rgba(255,60,156,.18);
-}
-.chargilyDiscover b{font-size:17px;color:#fff}
-@keyframes chargilyFullShine{0%,18%{transform:translateX(-65%) rotate(8deg);opacity:0}35%{opacity:1}62%,100%{transform:translateX(65%) rotate(8deg);opacity:0}}
+.chargilyTrustMain,.chargilyTrustSide{z-index:2}
+.chargilyMediaRow{direction:ltr;display:flex;align-items:center;justify-content:flex-end;gap:14px;margin-top:15px;position:relative;z-index:3}
+.chargilyDiscover{direction:rtl;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:16px;border:1px solid rgba(190,92,255,.7);background:linear-gradient(100deg,#741cff,#b52cff,#ff3c9c);color:#fff;font-size:11px;font-weight:950;box-shadow:0 10px 30px rgba(141,36,255,.24),inset 0 1px 0 rgba(255,255,255,.22);transition:transform .25s ease,box-shadow .25s ease,filter .25s ease}
+.chargilyDiscover b{font-size:14px}.chargilyDiscover:hover{transform:translateY(-3px) scale(1.02);filter:saturate(1.12);box-shadow:0 16px 38px rgba(141,36,255,.42),0 0 28px rgba(255,60,156,.18)}
+.chargilyVideoSide{padding:10px;gap:8px;overflow:hidden}
+.chargilyVideoFrame{width:100%;height:238px;min-height:0;border-radius:15px;overflow:hidden;border:1px solid rgba(190,92,255,.7);background:#050711;box-shadow:0 0 26px rgba(141,36,255,.18),inset 0 0 20px rgba(255,255,255,.035)}
+.chargilyVideo{display:block;width:100%;height:100%;object-fit:cover;background:#050711}
+.chargilyVideoSide strong{font-size:8px;color:#aeb6cd;text-align:center;line-height:1.5}
+@keyframes chargilyFullShine{0%,18%{transform:translateX(-70%) rotate(8deg);opacity:0}28%{opacity:.85}52%,100%{transform:translateX(70%) rotate(8deg);opacity:0}}
 @media(max-width:700px){
-  .chargilyMediaRow{grid-template-columns:minmax(0,1fr) 126px;gap:9px;margin-top:13px}
-  .chargilyVideoWrap{min-height:86px;border-radius:14px}
-  .chargilyVideo{height:86px}
-  .chargilyDiscover{min-height:48px;padding:9px 8px;border-radius:13px;font-size:9px;text-align:center}
-  .chargilyDiscover b{font-size:14px}
+  .chargilyTrustCard{display:grid;grid-template-columns:135px minmax(0,1fr);gap:12px;padding:15px;border-radius:22px;align-items:stretch}
+  .chargilyTrustMain{grid-column:2;grid-row:1}
+  .chargilyTrustSide{grid-column:1;grid-row:1;margin:0;min-width:0;padding:8px}
+  .chargilyVideoFrame{height:205px;border-radius:13px}
+  .chargilyVideoSide strong{font-size:7px}
+  .chargilyTrustTop{align-items:flex-start}.chargilyOfficial{font-size:9px}
+  .chargilyTrustMain h2{font-size:20px;line-height:1.5;margin-top:9px}
+  .chargilyTrustMain p{font-size:9px;line-height:1.8}
+  .chargilyMethods{gap:5px;margin-top:9px}.chargilyMethods span{font-size:7px;padding-inline:7px;min-height:25px}
+  .chargilyMediaRow{margin-top:10px}.chargilyDiscover{width:100%;min-height:43px;padding:8px 10px;font-size:9px;border-radius:13px}
+  .chargilySecurityNote{font-size:7px;margin-top:7px}
 }
