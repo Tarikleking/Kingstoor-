@@ -59,3 +59,29 @@ if(paymentCards.length){
   showPayment();
   setInterval(showPayment,3000);
 }
+
+// FAQ: automatically opens one question at a time, then moves to the next.
+const faqItems=[...document.querySelectorAll('.faqItem')];
+if(faqItems.length){
+  let faqActive=0;
+  let faqTimer;
+  const showFaq=(index,manual=false)=>{
+    faqItems.forEach((item,i)=>{
+      item.classList.toggle('faqActive',i===index);
+      if(i===index) item.open=true; else item.open=false;
+    });
+    faqActive=index;
+    if(manual){clearInterval(faqTimer);faqTimer=setInterval(()=>showFaq((faqActive+1)%faqItems.length),4300);}
+  };
+  showFaq(0);
+  faqTimer=setInterval(()=>showFaq((faqActive+1)%faqItems.length),4300);
+  faqItems.forEach((item,index)=>{
+    item.addEventListener('toggle',()=>{
+      if(item.open){
+        faqActive=index;
+        faqItems.forEach((other,i)=>{if(i!==index)other.open=false;other.classList.toggle('faqActive',i===index);});
+      }
+    });
+    item.querySelector('summary')?.addEventListener('click',()=>showFaq(index,true));
+  });
+}

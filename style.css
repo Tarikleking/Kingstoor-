@@ -96,3 +96,40 @@ footer{padding:28px max(20px,calc((100% - var(--max))/2));border-top:1px solid #
 
 .download{justify-content:center}.download>div{text-align:right}
 @media(max-width:600px){.galleryWrap{margin-inline:-12px;padding-inline:12px}.screens{padding:28px 0 38px}.screen-set{gap:12px;padding-right:12px}.screen-card{flex-basis:72vw;height:390px;border-radius:21px;transform:scale(.78)}.screen-card.is-center{transform:scale(1.08)}.paymentsStage{height:285px;margin-inline:2px}.paymentVisual{padding:23px 19px;border-radius:23px}.payIcon{width:62px;height:62px;border-radius:18px;font-size:27px}.payText{margin-top:13px;max-width:88%}.payText b{font-size:18px}.payText p{font-size:10px;line-height:1.85}.paymentVisual em{left:17px;bottom:15px;font-size:8px}.paymentVisual .payMark{font-size:115px;right:12px}.download>div{text-align:right}}
+
+/* Premium animated hero */
+.hero{perspective:1400px}
+.heroCard{animation:heroFloat 6s ease-in-out infinite;box-shadow:0 25px 70px #7d25ff28,0 0 0 1px #a13cff18;isolation:isolate;transform-origin:center}
+.heroCard::before{content:"";position:absolute;inset:-55%;background:linear-gradient(115deg,transparent 42%,#ffffff18 49%,#c86bff30 51%,transparent 58%);transform:translateX(-65%) rotate(8deg);animation:heroSweep 5.5s ease-in-out infinite;z-index:2;pointer-events:none}
+.heroCard::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 80px #8d24ff16,inset 0 0 0 1px #d78bff16;pointer-events:none;z-index:3}
+.heroCard .heroImage{position:relative;z-index:1;transform:scale(1.015);animation:heroZoom 7s ease-in-out infinite;will-change:transform}
+@keyframes heroFloat{0%,100%{transform:translateY(0) rotateX(0deg)}50%{transform:translateY(-6px) rotateX(.35deg)}}
+@keyframes heroZoom{0%,100%{transform:scale(1.015)}50%{transform:scale(1.045)}}
+@keyframes heroSweep{0%,25%{transform:translateX(-65%) rotate(8deg);opacity:0}42%{opacity:1}68%,100%{transform:translateX(65%) rotate(8deg);opacity:0}}
+
+/* Professional download banner */
+.download{position:relative;overflow:hidden;isolation:isolate;justify-content:space-between;min-height:150px;padding:25px 30px;border-radius:28px;background:linear-gradient(115deg,#160c2b,#0b1123 50%,#190b2a);border:1px solid #a536ff88;box-shadow:0 20px 65px #7b22ff1c,inset 0 0 45px #9d39ff0b}
+.download::before{content:"";position:absolute;inset:-100% -30%;background:linear-gradient(115deg,transparent 43%,#ffffff0d 50%,#b85cff1d 52%,transparent 59%);animation:downloadSweep 6s ease-in-out infinite;z-index:-1}
+.downloadGlow{position:absolute;width:280px;height:280px;left:-100px;top:-130px;border-radius:50%;background:#8d24ff;filter:blur(75px);opacity:.18;animation:downloadGlow 4s ease-in-out infinite;z-index:-1}
+.downloadCopy{position:relative;z-index:2;flex:1}.downloadBadge{display:inline-flex;align-items:center;gap:7px;color:#d59cff;font-size:11px;font-weight:800;padding:6px 11px;border-radius:999px;border:1px solid #9b4dff55;background:#8d24ff10}
+.download h2{margin:7px 0 3px;font-size:27px;line-height:1.35}.download h2 strong{background:linear-gradient(90deg,#fff,#c982ff,#63c9ff);-webkit-background-clip:text;color:transparent}.download p{max-width:680px;margin:0;color:#aeb5cc;font-size:12px;line-height:1.9}.downloadMeta{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}.downloadMeta b{font-size:9px;color:#c4c9da;font-weight:700}
+.downloadBtn{position:relative;z-index:2;min-width:180px;min-height:65px;display:flex;align-items:center;justify-content:center;gap:11px;padding:12px 17px;border-radius:20px;transition:transform .3s ease,box-shadow .3s ease;animation:downloadButton 2.8s ease-in-out infinite}.downloadBtn:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 16px 38px #9c2dff55}.downloadBtn span{font-size:14px}.downloadBtn small{font-size:8px;opacity:.8;display:block}.downloadBtn>b{font-size:22px}
+@keyframes downloadSweep{0%,22%{transform:translateX(-35%);opacity:0}42%{opacity:1}70%,100%{transform:translateX(35%);opacity:0}}
+@keyframes downloadGlow{50%{transform:scale(1.2);opacity:.28}}
+@keyframes downloadButton{50%{transform:translateY(-2px);box-shadow:0 12px 32px #9c2dff3b}}
+
+/* Auto-opening FAQ */
+.faqgrid{grid-template-columns:1fr 1fr;gap:14px}
+.faqItem{position:relative;overflow:hidden;min-height:62px;padding:0!important;border-radius:20px!important;background:linear-gradient(145deg,#0d1326,#070a15)!important;border:1px solid #282e4b!important;transition:border-color .35s ease,box-shadow .35s ease,transform .35s ease}
+.faqItem::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 25%,#9d45ff0c 50%,transparent 75%);transform:translateX(-100%);pointer-events:none}
+.faqItem.faqActive{border-color:#9b4dff99!important;box-shadow:0 16px 45px #7e29ff1c,inset 0 0 30px #8d24ff08;transform:translateY(-2px)}
+.faqItem.faqActive::before{animation:faqSweep 1.5s ease forwards}
+.faqItem summary{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:15px;list-style:none;cursor:pointer;padding:18px 19px;font-size:13px;font-weight:800}.faqItem summary::-webkit-details-marker{display:none}.faqItem summary b{width:27px;height:27px;flex:0 0 27px;display:grid;place-items:center;border-radius:50%;background:#8d24ff12;border:1px solid #9b4dff55;color:#cf8cff;font-size:17px;transition:transform .35s ease,background .35s ease}.faqItem[open] summary b{transform:rotate(45deg);background:#8d24ff2b}.faqItem p{position:relative;z-index:2;margin:0;padding:0 19px 18px;color:#aeb5cc;font-size:11px;line-height:2;animation:faqAnswer .45s ease both}
+@keyframes faqSweep{to{transform:translateX(100%)}}
+@keyframes faqAnswer{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* Usage policies */
+.policies{padding-top:20px}.policyGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.policyCard{position:relative;overflow:hidden;min-height:185px;padding:21px;border:1px solid #262b47;border-radius:20px;background:linear-gradient(145deg,#0c1223,#070a14);transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}.policyCard:hover{transform:translateY(-6px);border-color:#9142ff88;box-shadow:0 18px 45px #7624ff18}.policyCard::after{content:"";position:absolute;width:130px;height:130px;left:-65px;bottom:-65px;border-radius:50%;background:#8d24ff;filter:blur(45px);opacity:.08}.policyCard>span{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#8d24ff12;border:1px solid #9b4dff44;color:#c98bff;font-size:9px;font-weight:900}.policyCard h3{margin:15px 0 6px;font-size:15px}.policyCard p{margin:0;color:#9da5bf;font-size:10px;line-height:1.95}.policyNote{margin-top:14px;padding:14px 17px;border-radius:16px;border:1px solid #35d39a38;background:linear-gradient(90deg,#0b211b,#0a111b);color:#9fb4ad;font-size:10px;line-height:1.9}.policyNote b{color:#57e0ad}
+
+@media(max-width:1000px){.policyGrid{grid-template-columns:repeat(2,1fr)}.download{margin-inline:16px}}
+@media(max-width:600px){.heroCard{animation-duration:7s}.heroCard .heroImage{animation-duration:8s}.download{margin:0 12px 38px;padding:19px 16px;min-height:0;display:block}.downloadCopy{text-align:right}.download h2{font-size:21px}.download p{font-size:10px}.downloadMeta{gap:8px}.downloadMeta b{font-size:8px}.downloadBtn{width:100%;margin-top:16px;min-height:58px}.faqgrid{grid-template-columns:1fr;gap:10px}.faqItem summary{padding:16px 14px;font-size:11px}.faqItem p{padding:0 14px 16px;font-size:10px}.policyGrid{grid-template-columns:1fr 1fr;gap:9px}.policyCard{min-height:190px;padding:15px 12px}.policyCard h3{font-size:13px;margin-top:11px}.policyCard p{font-size:9px}.policyNote{font-size:9px}}
