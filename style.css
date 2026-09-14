@@ -11,6 +11,16 @@ footer{padding:28px max(20px,calc((100% - var(--max))/2));border-top:1px solid #
 @media(max-width:1000px){.nav nav{display:none}.hero{padding-top:22px}.heroCard{width:100%;margin:auto}.grid{grid-template-columns:repeat(3,1fr)}.featureGrid{grid-template-columns:repeat(2,1fr)}.payments{grid-template-columns:repeat(2,1fr)}footer{grid-template-columns:1fr;text-align:center}.footlogo{justify-content:center}.links{flex-wrap:wrap}}
 @media(max-width:600px){.nav{height:62px}.navbtn{padding:8px 11px;font-size:10px}.logo b{font-size:15px}.logo img{width:38px;height:38px}.hero{padding:12px 10px 38px}.heroCard{border-radius:20px}.heroCard .heroImage{width:100%;height:auto;border-radius:19px}.heroCard strong{font-size:20px}.section{padding:45px 12px}.grid{grid-template-columns:1fr 1fr;gap:9px}.grid article{min-height:132px;padding:14px 6px}.title{margin-bottom:22px}.title h2{font-size:27px}.title p{font-size:10px}.featureIntro h2{font-size:31px}.featureGrid{grid-template-columns:1fr 1fr;gap:9px}.featureGrid article{padding:17px 8px}.screens{gap:11px;margin-inline:-2px;padding-inline:3px 18px}.screen-card{flex-basis:72vw;height:390px;border-radius:19px}.download{margin:0 12px 38px;padding:17px;flex-wrap:wrap}.download>div{min-width:calc(100% - 88px)}.download .btn{width:100%;text-align:center}.faqgrid{grid-template-columns:1fr}}
 
+
+/* Animated hero showcase */
+.heroCard{animation:heroFloat 6s ease-in-out infinite;box-shadow:0 25px 70px #7d25ff28,0 0 0 1px #a13cff18;isolation:isolate}
+.heroCard::before{content:"";position:absolute;inset:-45%;background:linear-gradient(115deg,transparent 42%,#ffffff18 49%,#c86bff30 51%,transparent 58%);transform:translateX(-55%) rotate(8deg);animation:heroSweep 5.5s ease-in-out infinite;z-index:2;pointer-events:none}
+.heroCard .heroImage{position:relative;z-index:1;transform:scale(1.015);animation:heroZoom 7s ease-in-out infinite}
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes heroZoom{0%,100%{transform:scale(1.015)}50%{transform:scale(1.045)}}
+@keyframes heroSweep{0%,25%{transform:translateX(-65%) rotate(8deg);opacity:0}42%{opacity:1}68%,100%{transform:translateX(65%) rotate(8deg);opacity:0}}
+@media(max-width:600px){.heroCard{animation-duration:7s}.heroCard .heroImage{animation-duration:8s}}
+
 /* Animated services showcase */
 .servicesStage{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;perspective:1000px}
 .serviceVisual{--accent:#9b4dff;position:relative;min-height:150px;padding:20px;border:1px solid #272c4b;border-radius:24px;overflow:hidden;background:linear-gradient(145deg,#10152a 0%,#080b16 70%);isolation:isolate;animation:serviceFloat 4.8s ease-in-out infinite;transition:.35s}
