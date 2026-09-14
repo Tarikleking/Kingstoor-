@@ -60,28 +60,58 @@ if(paymentCards.length){
   setInterval(showPayment,3000);
 }
 
-// FAQ: automatically opens one question at a time, then moves to the next.
+// FAQ: automatic spotlight + full manual control.
 const faqItems=[...document.querySelectorAll('.faqItem')];
 if(faqItems.length){
-  let faqActive=0;
-  let faqTimer;
-  const showFaq=(index,manual=false)=>{
+  let faqActive=0, faqTimer=null, manualPause=false;
+  const setFaq=(index, open=true)=>{
     faqItems.forEach((item,i)=>{
-      item.classList.toggle('faqActive',i===index);
-      if(i===index) item.open=true; else item.open=false;
+      item.classList.toggle('faqActive',i===index && open);
+      item.open=(i===index && open);
     });
     faqActive=index;
-    if(manual){clearInterval(faqTimer);faqTimer=setInterval(()=>showFaq((faqActive+1)%faqItems.length),4300);}
   };
-  showFaq(0);
-  faqTimer=setInterval(()=>showFaq((faqActive+1)%faqItems.length),4300);
+  const startFaqAuto=()=>{
+    clearInterval(faqTimer);
+    faqTimer=setInterval(()=>{
+      if(!manualPause) setFaq((faqActive+1)%faqItems.length,true);
+    },4300);
+  };
+  setFaq(0,true); startFaqAuto();
   faqItems.forEach((item,index)=>{
-    item.addEventListener('toggle',()=>{
-      if(item.open){
-        faqActive=index;
-        faqItems.forEach((other,i)=>{if(i!==index)other.open=false;other.classList.toggle('faqActive',i===index);});
+    item.querySelector('summary')?.addEventListener('click',(e)=>{
+      e.preventDefault();
+      const wasOpen=item.open;
+      manualPause=true;
+      if(wasOpen){
+        item.open=false; item.classList.remove('faqActive');
+        setTimeout(()=>{manualPause=false; startFaqAuto();},2200);
+      }else{
+        setFaq(index,true);
+        setTimeout(()=>{manualPause=false; startFaqAuto();},5200);
       }
     });
-    item.querySelector('summary')?.addEventListener('click',()=>showFaq(index,true));
   });
 }
+
+// Dedicated policies interface.
+const policyModal=document.getElementById('policyModal');
+const openPolicies=()=>{
+  if(!policyModal) return;
+  policyModal.classList.add('show'); policyModal.setAttribute('aria-hidden','false');
+  document.body.classList.add('modalOpen');
+};
+const closePolicies=()=>{
+  if(!policyModal) return;
+  policyModal.classList.remove('show'); policyModal.setAttribute('aria-hidden','true');
+  document.body.classList.remove('modalOpen');
+};
+document.querySelectorAll('a[href="#policies"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();openPolicies();history.replaceState(null,'','#policies');}));
+policyModal?.querySelectorAll('[data-policy-close]').forEach(el=>el.addEventListener('click',closePolicies));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePolicies();});
+policyModal?.querySelectorAll('.policyTab').forEach(tab=>tab.addEventListener('click',()=>{
+  const key=tab.dataset.policyTab;
+  policyModal.querySelectorAll('.policyTab').forEach(t=>t.classList.toggle('active',t===tab));
+  policyModal.querySelectorAll('.policyContent').forEach(c=>c.classList.toggle('active',c.dataset.policyContent===key));
+}));
+if(location.hash==='#policies') openPolicies();

@@ -13,7 +13,7 @@
 <header class="nav">
   <a class="logo" href="#home"><img src="assets/kingstoor-logo.png" alt="KingstooR"><b>KingstooR</b></a>
   <nav>
-    <a class="active" href="#home">الرئيسية</a><a href="#services">الخدمات</a><a href="#screens">صور التطبيق</a><a href="#download">تحميل</a>
+    <a class="active" href="#home">الرئيسية</a><a href="#services">الخدمات</a><a href="#screens">صور التطبيق</a><a href="#policies">السياسات</a><a href="#download">تحميل</a>
   </nav>
   <a class="navbtn" href="#download">تحميل التطبيق ↓</a>
 </header>
@@ -129,15 +129,31 @@
   <details class="faqItem"><summary><span>كيف أحمل التطبيق؟</span><b>+</b></summary><p>اضغط على زر تحميل التطبيق في الموقع ثم ثبّت ملف APK على جهاز Android، مع السماح بالتثبيت من المصدر الذي حمّلت منه الملف إذا طلب النظام ذلك.</p></details>
 </div></section>
 
-<section class="section policies" id="policies"><div class="title"><i>✦</i><div><h2>سياسات الاستخدام</h2><p>قواعد واضحة لاستخدام KingstooR والموقع</p></div><i>✦</i></div>
-<div class="policyGrid">
-  <article class="policyCard"><span>01</span><h3>سياسة الاستخدام</h3><p>استخدم التطبيق والموقع بطريقة قانونية وللخدمات المسموح بها. يمنع إساءة الاستخدام أو محاولة تعطيل الأنظمة أو التحايل على عمليات الشحن والدفع.</p></article>
-  <article class="policyCard"><span>02</span><h3>الخصوصية والبيانات</h3><p>نحافظ على التعامل المسؤول مع البيانات اللازمة لتقديم الخدمة. لا تشارك كلمات المرور أو رموز OTP أو مفاتيح الاسترداد أو أي معلومات سرية مع أي طرف.</p></article>
-  <article class="policyCard"><span>03</span><h3>الدفع والشحن</h3><p>تأكد من اختيار طريقة الدفع الصحيحة قبل إتمام العملية. تفاصيل الأسعار والنتيجة النهائية للعملية تعتمد على الخدمة والطريقة المختارة داخل التطبيق.</p></article>
-  <article class="policyCard"><span>04</span><h3>الخدمات الرقمية</h3><p>قد تختلف مدة تنفيذ بعض الخدمات حسب المنصة أو مزود الخدمة. لا نضمن نتائجاً خارجة عن نطاق الخدمة التي يتم اختيارها وشراؤها.</p></article>
+
+
+<!-- Policies dedicated interface -->
+<div class="policyModal" id="policyModal" aria-hidden="true">
+  <div class="policyBackdrop" data-policy-close></div>
+  <section class="policyPanel" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+    <button class="policyClose" type="button" data-policy-close aria-label="إغلاق السياسات">×</button>
+    <div class="policyPanelHead">
+      <span class="policyPanelIcon">👑</span>
+      <div><span>KingstooR</span><h2 id="policyTitle">سياسات الموقع والتطبيق</h2><p>معلومات واضحة تساعدك على استخدام خدمات KingstooR بأمان وسهولة.</p></div>
+    </div>
+    <div class="policyTabs" role="tablist">
+      <button class="policyTab active" type="button" data-policy-tab="usage">الاستخدام</button>
+      <button class="policyTab" type="button" data-policy-tab="privacy">الخصوصية</button>
+      <button class="policyTab" type="button" data-policy-tab="payments">الدفع والشحن</button>
+      <button class="policyTab" type="button" data-policy-tab="digital">الخدمات الرقمية</button>
+    </div>
+    <div class="policyContent active" data-policy-content="usage"><span class="policyNum">01</span><h3>شروط استخدام الموقع والتطبيق</h3><p>استخدم KingstooR بطريقة قانونية ومسؤولة، ولا تحاول تعطيل الموقع أو التطبيق أو التحايل على أنظمة الشحن والدفع أو إساءة استخدام الخدمات. عند طلب أي خدمة، تأكد من البيانات التي أدخلتها قبل تأكيد العملية.</p></div>
+    <div class="policyContent" data-policy-content="privacy"><span class="policyNum">02</span><h3>الخصوصية وحماية المعلومات</h3><p>نستخدم المعلومات اللازمة لتقديم الخدمات وتحسين تجربة الاستخدام. لا تشارك كلمة مرور حسابك أو رموز OTP أو رموز الاسترداد أو مفاتيحك السرية مع أي شخص. KingstooR لن يطلب منك هذه المعلومات عبر الدعم أو الرسائل.</p></div>
+    <div class="policyContent" data-policy-content="payments"><span class="policyNum">03</span><h3>الدفع وشحن الرصيد</h3><p>تتوفر طرق دفع وشحن مختلفة حسب الخدمة، مثل البطاقة الذهبية وبوابات الدفع المتاحة وUSDT. راجع تفاصيل العملية قبل التأكيد، واحتفظ بإثبات الدفع عند الحاجة إلى متابعة مشكلة في عملية الشحن.</p></div>
+    <div class="policyContent" data-policy-content="digital"><span class="policyNum">04</span><h3>الخدمات الرقمية وتنفيذ الطلبات</h3><p>قد يختلف وقت تنفيذ الخدمة حسب نوعها والمنصة أو مزود الخدمة. يتم تنفيذ الطلب وفق الخدمة المختارة، وقد تتأثر بعض النتائج بعوامل خارج نطاق KingstooR مثل تغييرات المنصات الخارجية.</p></div>
+    <div class="policySecurity"><b>🔐 تنبيه أمني</b><span>لا ترسل كلمة المرور أو OTP أو مفاتيح الاسترداد لأي شخص، واستخدم دائماً القنوات الرسمية للدفع والتواصل.</span></div>
+  </section>
 </div>
-<div class="policyNote"><b>تنبيه أمني:</b> KingstooR لن يطلب منك كلمة مرور حسابك أو رمز OTP أو مفتاح استرداد. عند الشك، لا ترسل أي معلومات سرية.</div>
-</section>
+
 </main>
 
 <footer><div class="footlogo"><img src="assets/kingstoor-logo.png" alt="KingstooR"><b><span>KinG</span>stooR</b></div><div class="links"><a href="#home">الرئيسية</a><a href="#services">الخدمات</a><a href="#screens">صور التطبيق</a><a href="#faq">الأسئلة الشائعة</a><a href="#policies">السياسات</a><a href="#download">تحميل</a></div><p>© 2026 KingstooR — جميع الحقوق محفوظة.</p></footer>
