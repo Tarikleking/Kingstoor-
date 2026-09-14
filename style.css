@@ -38,3 +38,24 @@ footer{padding:28px max(20px,calc((100% - var(--max))/2));border-top:1px solid #
 @media(max-width:1000px){.servicesGrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.servicesGrid{grid-template-columns:1fr;gap:10px}.serviceCard{min-height:82px;padding:12px 13px}.serviceIcon{flex-basis:48px;width:48px;height:48px;border-radius:15px}.serviceIcon svg{width:24px;height:24px}.serviceText h3{font-size:14px}.serviceText small{font-size:9px}.serviceArrow{width:27px;height:27px}.galleryWrap{margin-inline:-12px;padding-inline:12px}.screen-set{gap:11px;padding-right:11px}.screen-card{flex-basis:72vw;height:390px}}
 .serviceVisual.serviceActive{transform:translateY(-9px) scale(1.025);border-color:color-mix(in srgb,var(--accent) 80%,#fff);box-shadow:0 22px 60px color-mix(in srgb,var(--accent) 24%,transparent),inset 0 0 35px color-mix(in srgb,var(--accent) 7%,transparent)}
+
+
+/* Service-specific cinematic backgrounds */
+.serviceVisual{background:#080b16;}
+.serviceVisual .serviceBg{position:absolute;inset:0;z-index:0;overflow:hidden;opacity:.95;pointer-events:none}
+.serviceVisual .serviceBg::before,.serviceVisual .serviceBg::after{content:"";position:absolute;inset:-30%;}
+.serviceVisual .serviceBg::before{background:radial-gradient(circle at 82% 22%,color-mix(in srgb,var(--accent) 42%,transparent) 0 13%,transparent 36%),radial-gradient(circle at 18% 88%,color-mix(in srgb,var(--accent) 20%,transparent) 0 10%,transparent 34%);filter:blur(8px);animation:bgDrift 5.5s ease-in-out infinite}
+.serviceVisual .serviceBg::after{background:linear-gradient(115deg,transparent 25%,rgba(255,255,255,.045) 48%,transparent 58%),repeating-linear-gradient(135deg,transparent 0 28px,rgba(255,255,255,.025) 29px 30px);transform:translateX(-18%);animation:bgSweep 4.8s ease-in-out infinite}
+.serviceVisual .serviceMark{position:absolute;right:24px;top:8px;font-size:150px;line-height:1;font-weight:1000;color:var(--accent);opacity:.055;transform:rotate(-8deg);filter:blur(.2px);z-index:1;user-select:none}
+.serviceVisual .visualGlow{z-index:1}
+.serviceVisual .visualIcon,.serviceVisual .visualText,.serviceVisual em{z-index:4}
+.instagram .serviceBg{background:radial-gradient(circle at 72% 32%,#ff3cac 0,transparent 31%),linear-gradient(135deg,#151020 0%,#3b124e 48%,#11152b 100%)}
+.tiktok .serviceBg{background:radial-gradient(circle at 75% 28%,#25f4ee 0,transparent 27%),radial-gradient(circle at 22% 76%,#ff2b88 0,transparent 25%),linear-gradient(135deg,#050507,#111827 65%,#050507)}
+.youtube .serviceBg{background:radial-gradient(circle at 78% 30%,#ff1f3d 0,transparent 29%),linear-gradient(135deg,#18090c,#4a0b13 48%,#090b14 100%)}
+.telegram .serviceBg{background:radial-gradient(circle at 78% 28%,#35aef2 0,transparent 30%),linear-gradient(135deg,#071522,#0b3c62 50%,#080d18 100%)}
+.games .serviceBg{background:radial-gradient(circle at 80% 26%,#a970ff 0,transparent 30%),radial-gradient(circle at 20% 78%,#4b2a9e 0,transparent 25%),linear-gradient(135deg,#0c0b1c,#211642 52%,#080b16)}
+.mobile .serviceBg{background:radial-gradient(circle at 78% 28%,#35d39a 0,transparent 30%),linear-gradient(135deg,#071914,#0d3b2b 52%,#080b16)}
+.gold .serviceBg{background:radial-gradient(circle at 78% 28%,#f2bb55 0,transparent 31%),linear-gradient(135deg,#171208,#4c3610 48%,#0b0d14 100%)}
+.usdt .serviceBg{background:radial-gradient(circle at 78% 28%,#26d39a 0,transparent 30%),linear-gradient(135deg,#061713,#0a4937 50%,#080b16)}
+@keyframes bgDrift{0%,100%{transform:translate3d(-2%,0,0) scale(1)}50%{transform:translate3d(3%,2%,0) scale(1.08)}}
+@keyframes bgSweep{0%,20%{transform:translateX(-30%) rotate(0);opacity:0}42%{opacity:.8}75%,100%{transform:translateX(28%) rotate(1deg);opacity:0}}
