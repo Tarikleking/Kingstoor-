@@ -10,3 +10,27 @@
 footer{padding:28px max(20px,calc((100% - var(--max))/2));border-top:1px solid #211d5c;background:#02030a;display:grid;grid-template-columns:1fr 2fr;align-items:center;gap:15px}.footlogo{display:flex;align-items:center;gap:8px}.links{display:flex;justify-content:center;gap:20px;color:#aeb3d0;font-size:11px}footer p{grid-column:1/-1;text-align:center;color:#626987;font-size:9px;border-top:1px solid #15173b;padding-top:13px;margin:0}
 @media(max-width:1000px){.nav nav{display:none}.hero{padding-top:22px}.heroCard{width:100%;margin:auto}.grid{grid-template-columns:repeat(3,1fr)}.featureGrid{grid-template-columns:repeat(2,1fr)}.payments{grid-template-columns:repeat(2,1fr)}footer{grid-template-columns:1fr;text-align:center}.footlogo{justify-content:center}.links{flex-wrap:wrap}}
 @media(max-width:600px){.nav{height:62px}.navbtn{padding:8px 11px;font-size:10px}.logo b{font-size:15px}.logo img{width:38px;height:38px}.hero{padding:12px 10px 38px}.heroCard{border-radius:20px}.heroCard .heroImage{width:100%;height:auto;border-radius:19px}.heroCard strong{font-size:20px}.section{padding:45px 12px}.grid{grid-template-columns:1fr 1fr;gap:9px}.grid article{min-height:132px;padding:14px 6px}.title{margin-bottom:22px}.title h2{font-size:27px}.title p{font-size:10px}.featureIntro h2{font-size:31px}.featureGrid{grid-template-columns:1fr 1fr;gap:9px}.featureGrid article{padding:17px 8px}.screens{gap:11px;margin-inline:-2px;padding-inline:3px 18px}.screen-card{flex-basis:72vw;height:390px;border-radius:19px}.download{margin:0 12px 38px;padding:17px;flex-wrap:wrap}.download>div{min-width:calc(100% - 88px)}.download .btn{width:100%;text-align:center}.faqgrid{grid-template-columns:1fr}}
+
+/* Services redesign */
+.servicesGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.serviceCard{position:relative;display:flex;align-items:center;gap:14px;min-height:92px;padding:15px 17px;border:1px solid #262c49;border-radius:20px;background:linear-gradient(135deg,#0d1224,#080b16);overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
+.serviceCard::before{content:"";position:absolute;inset:auto auto -55px -35px;width:130px;height:130px;border-radius:50%;background:var(--accent,#8d24ff);filter:blur(55px);opacity:.16;pointer-events:none}
+.serviceCard:hover{transform:translateY(-4px);border-color:var(--accent,#8d24ff);box-shadow:0 16px 42px color-mix(in srgb,var(--accent,#8d24ff) 18%,transparent)}
+.serviceIcon{position:relative;z-index:1;flex:0 0 54px;width:54px;height:54px;display:grid;place-items:center;border-radius:17px;background:linear-gradient(145deg,#171d38,#0d1122);border:1px solid color-mix(in srgb,var(--accent,#8d24ff) 42%,#2b3150);box-shadow:inset 0 0 18px #ffffff08,0 8px 22px #0005}
+.serviceIcon svg{width:27px;height:27px;fill:none;stroke:var(--accent,#b46cff);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 7px color-mix(in srgb,var(--accent,#b46cff) 55%,transparent))}
+.serviceIcon svg .fill{fill:var(--accent,#b46cff);stroke:none}
+.serviceText{position:relative;z-index:1;min-width:0;flex:1;text-align:right}
+.serviceText h3{margin:0 0 2px;font-size:15px;font-weight:900}.serviceText small{display:block;color:#8f96b1;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.serviceArrow{position:relative;z-index:1;display:grid;place-items:center;width:29px;height:29px;border-radius:50%;border:1px solid #2e3554;color:#aeb5d2;font-size:13px;transition:.25s}.serviceCard:hover .serviceArrow{color:#fff;background:var(--accent,#8d24ff);border-color:var(--accent,#8d24ff)}
+.instagram{--accent:#d946ef}.tiktok{--accent:#25f4ee}.youtube{--accent:#ff334b}.telegram{--accent:#29a9ea}.snapchat{--accent:#f5d90a}.facebook{--accent:#4c8dff}.games{--accent:#a970ff}.mobile{--accent:#35d39a}.gold{--accent:#f2bb55}.usdt{--accent:#26d39a}
+
+/* Automatic screenshot marquee */
+.galleryWrap{overflow:hidden;margin-inline:-20px;padding-inline:20px}
+.screens{overflow:hidden;display:block;padding:6px 0 20px;cursor:default;direction:ltr}
+.screens-track{display:flex;width:max-content;will-change:transform}
+.screen-set{display:flex;gap:16px;flex:none;padding-right:16px}
+.screen-card{flex:0 0 245px}
+.screens:hover .screens-track{animation-play-state:paused}
+@media (prefers-reduced-motion: reduce){.screens-track{animation:none!important}}
+@media(max-width:1000px){.servicesGrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.servicesGrid{grid-template-columns:1fr;gap:10px}.serviceCard{min-height:82px;padding:12px 13px}.serviceIcon{flex-basis:48px;width:48px;height:48px;border-radius:15px}.serviceIcon svg{width:24px;height:24px}.serviceText h3{font-size:14px}.serviceText small{font-size:9px}.serviceArrow{width:27px;height:27px}.galleryWrap{margin-inline:-12px;padding-inline:12px}.screen-set{gap:11px;padding-right:11px}.screen-card{flex-basis:72vw;height:390px}}
