@@ -271,3 +271,39 @@ if(whatsappFloat){
     e.preventDefault();
   });
 }
+
+
+// Email support form: free FormSubmit endpoint, delivered to support@kingstoor.com.
+const supportEmailForm=document.getElementById('supportEmailForm');
+const supportEmailResult=document.getElementById('supportEmailResult');
+if(supportEmailForm){
+  supportEmailForm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    if(!supportEmailResult)return;
+
+    const submit=supportEmailForm.querySelector('.supportEmailSubmit');
+    const original=submit?.innerHTML || 'إرسال الرسالة <span>➤</span>';
+    if(submit){submit.disabled=true;submit.innerHTML='جارٍ الإرسال...';}
+    supportEmailResult.className='supportEmailResult';
+    supportEmailResult.textContent='';
+
+    try{
+      const response=await fetch('https://formsubmit.co/ajax/support@kingstoor.com',{
+        method:'POST',
+        headers:{'Accept':'application/json'},
+        body:new FormData(supportEmailForm)
+      });
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok || data.success===false) throw new Error('send_failed');
+
+      supportEmailResult.classList.add('success');
+      supportEmailResult.textContent='تم إرسال رسالتك بنجاح ✅ سنراجعها ونرد عليك عبر البريد.';
+      supportEmailForm.reset();
+    }catch(err){
+      supportEmailResult.classList.add('error');
+      supportEmailResult.textContent='تعذر إرسال الرسالة حالياً. حاول مرة أخرى أو استخدم WhatsApp.';
+    }finally{
+      if(submit){submit.disabled=false;submit.innerHTML=original;}
+    }
+  });
+}
